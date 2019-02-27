@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  h1.text-center.my-4 Update Password
+  .col-md-5.m-auto
+    form.p-4.border.rounded(method="POST", action="/admin/user/update/password")
+      #form-group.pb-4
+        label *New Password
+        input.form-control(name='new_pw', type='password', placeholder='Enter Password')
+        input.form-control.mt-2(name='new_pw2', type='password', placeholder='Confirm Password')
+      button.btn.btn-primary.btn-block(type='submit') Update Password

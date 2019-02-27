@@ -1,0 +1,103 @@
+extends ../layout
+
+block content
+  h1.my-4.text-center=banksia.name
+  .col-md-10.m-auto 
+    //- Nav Tabs
+    ul#btab.nav.nav-pills.mb-3(role='tablist')
+      li.nav-item
+        a#details-tab.nav-link.active(data-toggle='pill', href='#details', role='tab', aria-controls='details', aria-selected='true') Details
+      li.nav-item
+        a#images-tab.nav-link(data-toggle='pill', href='#images', role='tab', aria-controls='images', aria-selected='true') Images
+      li.nav-item
+        a#geolocations-tab.nav-link(data-toggle='pill', href='#geolocations', role='tab', aria-controls='geolocations', aria-selected='true') Geolocations
+    //- Tab panels
+    .tab-content
+      #details.tab-pane.fade.show.active(role='tabpanel', arialabelledby='details-tab').border.rounded.p-4
+        h4.mb-4 Details
+        dl.row
+          dt.col-sm-3 Common Name
+          dd.col-sm-9= banksia.commonName
+          if nname
+            dt.col-sm-3 Noongar Name 
+            dd.col-sm-9= banksia.noongarName
+          dt.col-sm-3 Banksia Description
+          dd.col-sm-9= banksia.desc
+          dt.col-sm-3 Habitat Description
+          dd.col-sm-9= banksia.habitatDesc
+          dt.col-sm-3 Flower Description
+          dd.col-sm-9= banksia.flowerDesc
+          dt.col-sm-3 Flowering Group
+          dd.col-sm-3= group
+          dt.col-sm-3 Flowering Period
+          dd.col-sm-3= banksia.flowerPeriod
+        hr.mb-4
+        a.btn.btn-secondary.mr-2(href='/admin/banksia') Back
+        a.btn.btn-primary(href='/admin/banksia/edit/'+banksia._id) Edit
+        button.btn.btn-danger.float-right(data-toggle='modal', data-target='#del-banksia') Delete
+        #del-banksia.modal.fade(tabindex='-1', role='dialog', aria-labelledby='del-modal', aria-hidden='true')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                h5#del-modal-title.modal-title Delete Banksia (#{banksia.name})
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') ×
+              .modal-body
+                | You are about to delete this banksia. Are you sure?
+              .modal-footer
+                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                button.btn.btn-danger.delete-banksia(type='button', href='#', data-id=banksia._id) Delete
+      #images.tab-pane.fade(role='tabpanel', arialabelledby='images-tab').border.rounded.p-4
+        .row.align-items-end
+          .col
+            h4.float-left Images
+            form.form-inline.float-right.my-lg-0.border.rounded(method="POST", action="/admin/banksia/image/upload/"+ banksia._id, enctype="multipart/form-data")
+              .form-group
+                input.form-control-file.p-1(name='banksiaImg', type='file', required)
+              button.btn.btn-outline-dark(type='submit') Upload
+        .row.p-4
+          each img, i in banksia.img
+            .col-md-4.p-2
+              img.img-thumbnail.rounded.mx-auto.d-block(src="/uploads/" + img, alt="")
+              button.btn.btn-danger.btn-block.mt-4(data-toggle='modal', data-target='#img-'+i) Delete
+              .modal.fade(id='img-'+i, tabindex='-1', role='dialog', aria-labelledby=img, aria-hidden='true')
+                .modal-dialog(role='document')
+                  .modal-content
+                    .modal-header
+                      h5#del-img-title.modal-title Delete Banksia Image
+                      button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    .modal-body
+                      p You are about to delete this image. Are you sure?
+                      img.img-thumbnail.rounded.mx-auto.d-block(src="/uploads/" + img, alt="")
+                    .modal-footer
+                      button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                      form(method='POST', action='/admin/banksia/image/delete/' + banksia._id + '/' + img)
+                        button.btn.btn-danger Delete
+        hr.mb-4
+        a.btn.btn-secondary(href='/banksia') Back
+      #geolocations.tab-pane.fade.active(role='tabpanel', arialabelledby='geolocations-tab').border.rounded.p-4
+        h4 Geolocations
+        form.form-inline.my-3.border.rounded(method="POST", action="/admin/geo/banksia/add/"+ banksia._id)
+          label.m-2 Latitude
+          input.form-control.m-2(name='lat', type='number', step='any', placeholder='Enter Latitude', required)
+          label.m-2 Longitude
+          input.form-control.m-2(name='lng', type='number', step='any', placeholder='Enter Longitude', required)
+          button.btn.btn-outline-primary.m-2(type='submit') Add Point
+        #mapid.border.rounded
+          each geo, i in geos
+            .modal.fade(id='geo-'+i, tabindex='-1', role='dialog', aria-labelledby=geo, aria-hidden='true')
+              .modal-dialog(role='document')
+                .modal-content
+                  .modal-header
+                    h5#del-img-title.modal-title Delete Geolocation Point
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                      span(aria-hidden='true') ×
+                  .modal-body
+                    | You are about to delete this geolocation. Are you sure?
+                  .modal-footer
+                    button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                    form(method='POST', action='/admin/geo/'+ geo.type +'/'+geo.refid+'/delete/'+ geo._id)
+                      button.btn.btn-danger Delete
+        hr.mb-4
+        a.btn.btn-secondary(href='/admin/banksia') Back

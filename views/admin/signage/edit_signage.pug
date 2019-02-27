@@ -1,0 +1,95 @@
+extends ../layout
+
+block content
+  h1.text-center.mt-4 Edit Signage 
+  h4.text-center.mb-4 #{signage.name}
+  .col-md-10.m-auto
+    //- Nav Tabs
+    ul#btab.nav.nav-pills.mb-3(role='tablist')
+      li.nav-item
+        a#details-tab.nav-link.active(data-toggle='pill', href='#details', role='tab', aria-controls='details', aria-selected='true') Details
+      li.nav-item
+        a#images-tab.nav-link(data-toggle='pill', href='#images', role='tab', aria-controls='images', aria-selected='true') Images
+      li.nav-item
+        a#geolocations-tab.nav-link(data-toggle='pill', href='#geolocations', role='tab', aria-controls='geolocations', aria-selected='true') Geolocations
+    //- Tab panels
+    .tab-content
+      #details.tab-pane.fade.show.active(role='tabpanel', arialabelledby='details-tab').border.rounded.p-4
+        h4.mb-4 Details
+        form(method="POST", action="/admin/signage/" + signage._id)
+          #form-group.pb-4
+            label *Signage Name
+            input.form-control(name='name', type='text', value=signage.name, required)
+          #form-group.pb-4
+            label *Description
+            textarea.form-control(name='desc', rows='3', required)= signage.desc
+          hr.mb-4
+          a.btn.btn-secondary.mr-2(href='/admin/signage') Back
+          button.btn.btn-primary(type='submit') Update
+          button.btn.btn-danger.float-right(type='button', data-toggle='modal', data-target='#del-signage') Delete
+        #del-signage.modal.fade(tabindex='-1', role='dialog', aria-labelledby='del-modal', aria-hidden='true')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                h5#del-modal-title.modal-title Delete Signage (#{signage.name})
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') ×
+              .modal-body
+                | You are about to delete this signage. Are you sure?
+              .modal-footer
+                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                button.btn.btn-danger.delete-signage(type='button', href='#', data-id=signage._id) Delete
+      #images.tab-pane.fade(role='tabpanel', arialabelledby='images-tab').border.rounded.p-4
+        .row.align-items-end
+          .col
+            h4.float-left Images
+            form.form-inline.float-right.my-lg-0.border.rounded(method="POST", action="/admin/signage/image/upload/"+ signage._id, enctype="multipart/form-data")
+              .form-group
+                input.form-control-file.p-1(name='signageImg', type='file', required)
+              button.btn.btn-outline-dark(type='submit') Upload
+        .row.p-4
+          each img, i in signage.img
+            .col-md-4.p-2
+              img.img-thumbnail.rounded.mx-auto.d-block(src="/uploads/" + img, alt="")
+              button.btn.btn-danger.btn-block.mt-4(data-toggle='modal', data-target='#img-'+i) Delete
+              .modal.fade(id='img-'+i, tabindex='-1', role='dialog', aria-labelledby=img, aria-hidden='true')
+                .modal-dialog(role='document')
+                  .modal-content
+                    .modal-header
+                      h5#del-img-title.modal-title Delete Signage Image
+                      button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    .modal-body
+                      p You are about to delete this image. Are you sure?
+                      img.img-thumbnail.rounded.mx-auto.d-block(src="/uploads/" + img, alt="")
+                    .modal-footer
+                      button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                      form(method='POST', action='/admin/signage/image/delete/' + signage._id + '/' + img)
+                        button.btn.btn-danger Delete
+        hr.mb-4
+        a.btn.btn-secondary.mr-2(href='/admin/signage') Back
+      #geolocations.tab-pane.fade.active(role='tabpanel', arialabelledby='geolocations-tab').border.rounded.p-4
+        h4 Geolocations
+        form.form-inline.my-3.border.rounded(method="POST", action="/admin/geo/signage/add/"+ signage._id)
+          label.m-2 Latitude
+          input.form-control.m-2(name='lat', type='number', step='any' placeholder='Enter Latitude')
+          label.m-2 Longtitude
+          input.form-control.m-2(name='lng', type='number', step='any' placeholder='Enter Latitude')
+          button.btn.btn-outline-primary.m-2(type='submit') Add Point    
+        #mapid.border.rounded
+          each geo, i in geos
+            .modal.fade(id='geo-'+i, tabindex='-1', role='dialog', aria-labelledby=geo, aria-hidden='true')
+              .modal-dialog(role='document')
+                .modal-content
+                  .modal-header
+                    h5#del-img-title.modal-title Delete Geolocation Point
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                      span(aria-hidden='true') ×
+                  .modal-body
+                    | You are about to delete this geolocation. Are you sure?
+                  .modal-footer
+                    button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                    form(method='POST', action='/admin/geo/'+ geo.type +'/'+geo.refid+'/delete/'+ geo._id)
+                      button.btn.btn-danger Delete
+        hr.mb-4
+        a.btn.btn-secondary.mr-2(href='/admin/signage') Back

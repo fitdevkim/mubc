@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  h1.text-center.my-4 Add Signage
+  .col-md-8.m-auto
+    form.p-4.border.rounded(method="POST", action="/admin/signage/add", enctype="multipart/form-data")
+      #form-group.pb-4
+        label *Signage Name
+        input.form-control(name='name', type='text', placeholder='Enter Signage Name', required)
+      #form-group.pb-4
+        label *Description
+        textarea.form-control(name='desc', rows='4', required)
+      #form-group.pb-4
+        label Upload Signage Image
+        .form-group
+          input.form-control-file.pl-2(name='signageImg', type='file')
+      a.btn.btn-secondary.mr-2(href='/admin/signage') Back
+      button.btn.btn-primary(type='submit') Submit

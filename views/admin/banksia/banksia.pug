@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h1.my-4.text-center Banksia Management
+  .row
+    .col-md-10.m-auto
+      .row.align-items-end
+        .col
+          //- form.form-inline.mb-2.float-right.my-lg-0(action="#", method="get")
+          //-   input.form-control.mr-sm-2(type="search", name="search", placeholder="Search")
+          //-   button.btn.btn-outline-secondary(type="submit") Search
+          a.btn.btn-outline-primary.float-left.mb-2(href='/admin/banksia/add') Add New Banksia
+      ul.list-group
+        each banksia, i in banksias
+          a.list-group-item.list-group-item-action.flex-column.align-items-start(href='/admin/banksia/'+banksia._id)
+            .d-flex.w-100.justify-content-between
+              h5.mb-1= banksia.name
+            p.mb-1= banksia.desc
+            

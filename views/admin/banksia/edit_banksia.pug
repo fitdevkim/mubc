@@ -1,0 +1,60 @@
+extends ../layout
+
+block content
+  h1.text-center.my-4 Edit Banksia
+  .row
+    .col-md-10.m-auto
+      form.p-4.border.rounded(method='POST', action='/admin/banksia/edit/' + banksia._id)
+        #form-group.pb-4
+          label *Banksia Name
+          input.form-control(name='name', type='text', placeholder='Enter Banksia Name', value=banksia.name, required)
+        .form-row
+          #form-group.pb-4.col-md-6
+            label Common Name
+            input.form-control(name='commonName', type='text', placeholder='Enter Common Name', value=banksia.commonName)
+          #form-group.pb-4.col-md-6
+            label Noongar Name
+            input.form-control(name='noongarName', type='text', placeholder='Enter Noongar Name', value=banksia.noongarName)  
+        #form-group.pb-4
+          label *Banksia Description
+          textarea.form-control(name='desc', rows='3', required)= banksia.desc
+        .form-row
+          #form-group.pb-4.col-md-6
+            label *Flower Descripton
+            textarea.form-control(name='flowerDesc', rows='3', required)= banksia.flowerDesc
+          #form-group.pb-4.col-md-6
+            label *Habitat Description
+            textarea.form-control(name='habitatDesc', rows='3', required)= banksia.habitatDesc
+        .form-row  
+          #form-group.pb-4.col-md-6
+            label *Group
+            select.form-control(name='group', required)
+              option Select one
+              option(value="Gold", selected=isGold) Gold
+              option(value="Orange", selected=isOrange) Orange
+              option(value="Others", selected=isOthers) Others
+              option(value="Prostrate", selected=isProstate) Prostrate
+              option(value="White", selected=isWhite) White          
+              option(value="Yellow", selected=isYellow) Yellow
+          #form-group.pb-2.col-md-6
+            label Other Flowering Group Name
+            if isOthers
+            input.form-control(name='otherGroupName', type='text', value=(isOthers ? banksia.otherGroupName : ''))  
+            small.form-text.text-muted If "Others" is selected
+        #form-group.pb-4
+          label Flowering Period
+          .form-control
+            .form-check.form-check-inline.px-3
+              input.form-check-input(name='fpSpring', type='checkbox', value='Spring', checked=isSpring)
+              label.form-check-label Spring
+            .form-check.form-check-inline.px-3
+              input.form-check-input(name='fpSummer', type='checkbox', value='Summer', checked=isSummer)
+              label.form-check-label Summer
+            .form-check.form-check-inline.px-3
+              input.form-check-input(name='fpAutumn', type='checkbox', value='Autumn', checked=isAutumn)
+              label.form-check-label Autumn
+            .form-check.form-check-inline.px-3
+              input.form-check-input(name='fpWinter', type='checkbox', value='Winter', checked=isWinter)
+              label.form-check-label Winter
+        a.btn.btn-secondary.mr-2(href='/admin/banksia/' + banksia._id) Back
+        button.btn.btn-primary(type='submit') Update

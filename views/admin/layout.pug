@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title MUBC Management
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    link(rel="stylesheet", href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css", integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==",crossorigin="")
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel="shortcut icon", type="image/x-icon", href="/favicon.ico")
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      .container
+        a.navbar-brand.mb-0(href='/admin')
+          img(src="/img/murdoch-logo-hoz-white.svg", alt="", srcset="", height="47px")
+        if user || errors
+          button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbar', aria-controls='navbar', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+          #navbar.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+              li.nav-item
+                a.nav-link(href='/admin/aboutsects') About Section
+              li.nav-item
+                a.nav-link(href='/admin/banksia') Banksias 
+              li.nav-item
+                a.nav-link(href='/admin/signage') Signages
+            ul.navbar-nav.navbar-right
+              li.nav-item
+                a.nav-link(href='/admin/user/update/password') Update Password
+              li.nav-item
+                a.nav-link(href='/admin/user/logout') Logout 
+              
+    .container
+      br
+      != messages('message', locals)
+      if errors
+        each error, i in errors
+          div(class="alert alert-danger") #{error.msg}
+      block content
+      br
+      hr
+      footer
+        p Copyright &copy; 2019
+      script(src='https://code.jquery.com/jquery-3.3.1.min.js', integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=', crossorigin='anonymous')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+      script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+      script(src='/js/main.js')
+      if geos
+        script(src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" ,integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==", crossorigin="")
+        script(src="/js/map.js")
+        each geo, i in geos
+          script.
+            drawPoint(#{geo.lat},#{geo.lng},"Latitude: #{geo.lat}<br> Longtitude: #{geo.lng}<br><button style='color:white;' class='btn btn-danger btn-sm btn-block mt-1 delete-geo' data-toggle='modal' data-target='#geo-#{i}'>Delete Point</button>");

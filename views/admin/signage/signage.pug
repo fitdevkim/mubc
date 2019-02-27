@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-10.m-auto
+      h1.text-center.my-4 Signage Management
+      .row.align-items-end
+        .col
+          //- form.form-inline.mb-2.float-right.my-lg-0(action="#", method="get")
+          //-   input.form-control.mr-sm-2(type="search", name="search", placeholder="Search")
+          //-   button.btn.btn-outline-secondary(type="submit") Search
+          a.btn.btn-outline-primary.float-left.mb-2(href='/admin/signage/add') Add New Signage
+      .list-group
+        each signage, i in signages
+          a.list-group-item.list-group-item-action.flex-column.align-items-start(href='/admin/signage/' + signage._id)
+            .d-flex.w-100.justify-content-between
+              h5.mb-1= signage.name
+            p.mb-1= signage.desc

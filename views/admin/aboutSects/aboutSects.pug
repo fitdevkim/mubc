@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+  .col-md-10.m-auto
+    h1.text-center.mt-4 About Section Management
+    p.text-center Select a section to edit section content.
+    ul#btab.nav.nav-pills.mb-3(role='tablist')
+      each aboutSect, i in aboutSects
+        li.nav-item
+          if i == 0
+            a.nav-link.active(id=aboutSect.sectionType+'-tab', data-toggle='pill', href='#' +aboutSect.sectionType, role='tab', aria-controls=aboutSect.sectionType, aria-selected='true')=aboutSect.name
+          else
+            a.nav-link(id=aboutSect.sectionType+'-tab',data-toggle='pill', href='#' +aboutSect.sectionType, role='tab', aria-controls=aboutSect.sectionType, aria-selected='true')=aboutSect.name
+    .tab-content
+      each aboutSect, i in aboutSects
+        if i == 0
+          .tab-pane.fade.show.active(id=aboutSect.sectionType,  role='tabpanel', arialabelledby=aboutSect.sectionType+'-tab').border.rounded.p-4
+            h4= aboutSect.name
+            form.p-4.border.rounded(method='POST', action='/admin/aboutsects/edit/' + aboutSect._id)
+              #form-group.pb-4
+                label *Section Name
+                input.form-control(name='name', type='text', value=aboutSect.name)
+              #form-group.pb-4
+                label *Section Description
+                textarea.form-control(name='desc', rows='5', required)= aboutSect.desc
+              a.btn.btn-secondary.mr-2(href='/admin') Back
+              button.btn.btn-primary(type='submit') Update
+        else
+          .tab-pane.fade(id=aboutSect.sectionType, role='tabpanel', arialabelledby=aboutSect.sectionType+'-tab').border.rounded.p-4
+            h4= aboutSect.name
+            form.p-4.border.rounded(method='POST', action='/admin/aboutsects/edit/' + aboutSect._id)
+              #form-group.pb-4
+                label *Section Name
+                input.form-control(name='name', type='text', value=aboutSect.name)
+              #form-group.pb-4
+                label *Section Description
+                textarea.form-control(name='desc', rows='5', required)= aboutSect.desc
+              a.btn.btn-secondary.mr-2(href='/admin') Back
+              button.btn.btn-primary(type='submit') Update

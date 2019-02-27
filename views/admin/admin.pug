@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1.bd-title.my-4.text-center MUBC Dashboard
+  if user
+    p.bd-lead.text-center Please select a component to manage.
+    .list-group.col-md-5.m-auto
+      .list-group-item.list-group-item-action
+        .row
+          .col-md-8 
+            label.pt-1 About Section Management
+          .col-md-4
+            a.btn.btn-outline-primary.float-right(href="/admin/aboutsects") View
+      .list-group-item.list-group-item-action 
+        .row
+          .col-md-7.pt-1 Banksia Management
+          .col-md-5
+            a.btn.btn-outline-primary.float-right.ml-1(href="/admin/banksia") View
+            a.btn.btn-outline-secondary.float-right(href="/admin/banksia/add") Add
+      .list-group-item.list-group-item-action 
+        .row
+          .col-md-7.pt-1 Signage Management
+          .col-md-5
+            a.btn.btn-outline-primary.float-right.ml-1(href="/admin/signage") View
+            a.btn.btn-outline-secondary.float-right(href="/admin/signage/add") Add
+  else
+    p.bd-lead.text-center Please login to access MUBC Manager
+    form.p-4.border.rounded.mx-5.col-md-5.m-auto(method="POST", action="/admin/user/login")
+      h4.mb-4.text-center Login
+      #form-group.pb-4
+        label *Username
+        input.form-control(name='username', type='text', placeholder='Enter Username')
+      #form-group.pb-4
+        label *Password
+        input.form-control(name='password', type='password', placeholder='Enter Password')
+      button.btn.btn-primary.btn-block(type='submit') Login
