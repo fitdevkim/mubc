@@ -1,8 +1,9 @@
 const express = require("express");
-const tool = require("../../config/tool");
-const router = express.Router();
 const multer = require("multer");
 const path = require("path");
+const tool = require("../tool");
+const map = require("../../config/map");
+const router = express.Router();
 
 // Set Storage Engine
 const storage = multer.diskStorage({
@@ -72,9 +73,9 @@ router.get("/:id", tool.ensureAuthenticated, (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          let group = banksia.group;
-          let cname = false;
-          let nname = false;
+          let group = banksia.group,
+            cname = false,
+            nname = false;
 
           if (banksia.commonName != "") {
             cname = true;
@@ -92,7 +93,8 @@ router.get("/:id", tool.ensureAuthenticated, (req, res) => {
             cname: cname,
             nname: nname,
             group: group,
-            geos: geos
+            geos: geos,
+            map: map.center
           });
         }
       });

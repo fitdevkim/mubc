@@ -1,8 +1,9 @@
 const express = require("express");
-const tool = require("../../config/tool");
-const router = express.Router();
 const multer = require("multer");
 const path = require("path");
+const tool = require("../tool");
+const map = require("../../config/map");
+const router = express.Router();
 
 // Set Storage Engine
 const storage = multer.diskStorage({
@@ -118,7 +119,8 @@ router.get("/:id", tool.ensureAuthenticated, (req, res) => {
         } else {
           res.render("admin/signage/edit_signage", {
             signage: signage,
-            geos: geos
+            geos: geos,
+            map: map.center
           });
         }
       });

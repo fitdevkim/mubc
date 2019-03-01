@@ -1,5 +1,5 @@
 const express = require("express");
-const tool = require("../../config/tool");
+const tool = require("../tool");
 const router = express.Router();
 
 // Bring in About Section Model

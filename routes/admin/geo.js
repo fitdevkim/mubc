@@ -1,15 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const bounds = {
-  nw: {
-    lat: -32.0677183,
-    lng: 115.8345216
-  },
-  se: {
-    lat: -32.0686394,
-    lng: 115.8356287
-  }
-};
+const map = require("../../config/map");
+
+const bounds = map.bounds;
 
 const isBounds = (point, bounds) => {
   return (
