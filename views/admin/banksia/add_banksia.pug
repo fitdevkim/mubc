@@ -1,33 +1,33 @@
 extends ../layout
 
 block content
-  h1.my-4.text-center Add Banksia
+  h1.mb-4.text-center Add Banksia
   .row
     .col-md-10.m-auto
       form.p-4.border.rounded(method="POST", action="/admin/banksia/add", enctype="multipart/form-data")
-        #form-group.pb-4
-          label *Banksia Name
+        .form-group.mb-3
+          label Banksia Name*
           input.form-control(name='name', type='text', placeholder='Enter Banksia Name', required)
         .form-row
-          #form-group.pb-4.col-md-6
+          .form-group.mb-3.col-md-6
             label Common Name
             input.form-control(name='commonName', type='text', placeholder='Enter Common Name')
-          #form-group.pb-4.col-md-6
+          .form-group.mb-3.col-md-6
             label Noongar Name
             input.form-control(name='noongarName', type='text', placeholder='Enter Noongar Name')  
-        #form-group.pb-4
-          label *Banksia Description
+        .form-group.mb-3
+          label Banksia Description*
           textarea.form-control(name='desc', rows='3', required)
         .form-row
-          #form-group.pb-4.col-md-6
-            label *Flower Descripton
+          .form-group.mb-3.col-md-6
+            label Flower Descripton*
             textarea.form-control(name='flowerDesc', rows='3', required)
-          #form-group.pb-4.col-md-6
-            label *Habitat Description
+          .form-group.mb-3.col-md-6
+            label Habitat Description*
             textarea.form-control(name='habitatDesc', rows='3', required)
         .form-row  
-          #form-group.pb-4.col-md-6
-            label *Flowering Group
+          .form-group.mb-3.col-md-6
+            label Flowering Group*
             select.form-control(name='group', required)
               option Select one
               option(value="Gold") Gold
@@ -36,29 +36,30 @@ block content
               option(value="Prostrate") Prostrate
               option(value="White") White          
               option(value="Yellow") Yellow
-          #form-group.pb-2.col-md-6
+          .form-group.mb-3.col-md-6
             label Other Group Name
             input.form-control(name='otherGroupName', type='text', placeholder='Enter Group name')  
             small.form-text.text-muted If "Others" is selected
         .form-row
-          #form-group.pb-4.col-md-6
+          .form-group.mb-3.col-md-6
             label Flowering Period
             .form-control
-              .form-check.form-check-inline.px-3
+              .form-check.form-check-inline.mr-4
                 input.form-check-input(name='fpSpring', type='checkbox', value='Spring')
                 label.form-check-label Spring
-              .form-check.form-check-inline.px-3
+              .form-check.form-check-inline.mr-4
                 input.form-check-input(name='fpSummer', type='checkbox', value='Summer')
                 label.form-check-label Summer
-              .form-check.form-check-inline.px-3
+              .form-check.form-check-inline.mr-4
                 input.form-check-input(name='fpAutumn', type='checkbox', value='Autumn')
                 label.form-check-label Autumn
-              .form-check.form-check-inline.px-3
+              .form-check.form-check-inline.mr-4
                 input.form-check-input(name='fpWinter', type='checkbox', value='Winter')
                 label.form-check-label Winter
-          #form-group.pb-4.col-md-6
-            label *Upload Banksia Image
+          .form-group.mb-3.col-md-6
+            label Upload Banksia Image*
             .form-group
               input.form-control-file.pl-2(name='banksiaImg', type='file', required)
-        a.btn.btn-secondary.mr-2(href='admin/banksia') Back
+        a.btn.btn-secondary.mr-2(href='javascript:history.go(-1)') Back
         button.btn.btn-primary.btn(type='submit') Submit
+        small.float-right.text-muted *Required

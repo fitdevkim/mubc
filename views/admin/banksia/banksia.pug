@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1.my-4.text-center Banksia Management
+  h1.mb-4.text-center Banksia Management
   .row
     .col-md-10.m-auto
       .row.align-items-end
@@ -15,5 +15,5 @@ block content
           a.list-group-item.list-group-item-action.flex-column.align-items-start(href='/admin/banksia/'+banksia._id)
             .d-flex.w-100.justify-content-between
               h5.mb-1= banksia.name
-            p.mb-1= banksia.desc
+            p.mb-1.text-truncate= banksia.desc
             

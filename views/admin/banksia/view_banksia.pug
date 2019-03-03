@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1.my-4.text-center=banksia.name
+  h1.mb-4.text-center=banksia.name
   .col-md-10.m-auto 
     //- Nav Tabs
     ul#btab.nav.nav-pills.mb-3(role='tablist')
@@ -33,7 +33,7 @@ block content
           dt.col-sm-3 Flowering Period
           dd.col-sm-3= banksia.flowerPeriod
         hr.mb-4
-        a.btn.btn-secondary.mr-2(href='/admin/banksia') Back
+        a.btn.btn-secondary.mr-2(href='javascript:history.go(-1)') Back
         a.btn.btn-primary(href='/admin/banksia/edit/'+banksia._id) Edit
         button.btn.btn-danger.float-right(data-toggle='modal', data-target='#del-banksia') Delete
         #del-banksia.modal.fade(tabindex='-1', role='dialog', aria-labelledby='del-modal', aria-hidden='true')
@@ -76,7 +76,7 @@ block content
                       form(method='POST', action='/admin/banksia/image/delete/' + banksia._id + '/' + img)
                         button.btn.btn-danger Delete
         hr.mb-4
-        a.btn.btn-secondary(href='/banksia') Back
+        a.btn.btn-secondary(href='javascript:history.go(-1)') Back
       #geolocations.tab-pane.fade.active(role='tabpanel', arialabelledby='geolocations-tab').border.rounded.p-4
         h4 Geolocations
         form.form-inline.my-3.border.rounded(method="POST", action="/admin/geo/banksia/add/"+ banksia._id)
@@ -101,4 +101,4 @@ block content
                     form(method='POST', action='/admin/geo/'+ geo.type +'/'+geo.refid+'/delete/'+ geo._id)
                       button.btn.btn-danger Delete
         hr.mb-4
-        a.btn.btn-secondary(href='/admin/banksia') Back
+        a.btn.btn-secondary(href='javascript:history.go(-1)') Back

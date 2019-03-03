@@ -1,11 +1,11 @@
 extends ../layout
 
 block content
-  h1.text-center.my-4 Update Password
+  h1.text-center Update Password
+  p.text-center.mb-4 Please enter your new password
   .col-md-5.m-auto
     form.p-4.border.rounded(method="POST", action="/admin/updatePassword")
-      #form-group.pb-4
-        label *New Password
-        input.form-control(name='new_pw', type='password', placeholder='Enter Password')
-        input.form-control.mt-2(name='new_pw2', type='password', placeholder='Confirm Password')
+      .form-group.mb-3
+        input.form-control(name='new_pw', type='password', placeholder='Enter Password', required)
+        input.form-control.mt-2(name='new_pw2', type='password', placeholder='Confirm Password', required)
       button.btn.btn-primary.btn-block(type='submit') Update Password

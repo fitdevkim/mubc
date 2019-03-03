@@ -17,23 +17,27 @@ block content
           .tab-pane.fade.show.active(id=aboutSect.sectionType,  role='tabpanel', arialabelledby=aboutSect.sectionType+'-tab').border.rounded.p-4
             h4= aboutSect.name
             form.p-4.border.rounded(method='POST', action='/admin/aboutsects/edit/' + aboutSect._id)
-              #form-group.pb-4
-                label *Section Name
+              .input-group.mb-3
+                .input-group-prepend
+                  label.input-group-text Section Name*
                 input.form-control(name='name', type='text', value=aboutSect.name)
-              #form-group.pb-4
-                label *Section Description
+              .form-group.mb-3
+                label Section Description*
                 textarea.form-control(name='desc', rows='5', required)= aboutSect.desc
-              a.btn.btn-secondary.mr-2(href='/admin') Back
+              a.btn.btn-secondary.mr-2(href='javascript:history.go(-1)') Back
               button.btn.btn-primary(type='submit') Update
+              label.float-right.small *Required
         else
           .tab-pane.fade(id=aboutSect.sectionType, role='tabpanel', arialabelledby=aboutSect.sectionType+'-tab').border.rounded.p-4
             h4= aboutSect.name
             form.p-4.border.rounded(method='POST', action='/admin/aboutsects/edit/' + aboutSect._id)
-              #form-group.pb-4
-                label *Section Name
+              .input-group.mb-3
+                .input-group-prepend
+                  label.input-group-text Section Name*
                 input.form-control(name='name', type='text', value=aboutSect.name)
-              #form-group.pb-4
-                label *Section Description
+              .form-group.mb-3
+                label Section Description*
                 textarea.form-control(name='desc', rows='5', required)= aboutSect.desc
-              a.btn.btn-secondary.mr-2(href='/admin') Back
+              a.btn.btn-secondary.mr-2(href='javascript:history.go(-1)') Back
               button.btn.btn-primary(type='submit') Update
+              small.float-right.text-muted *Required

@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1.text-center.mt-4 Edit Signage 
+  h1.text-center Edit Signage 
   h4.text-center.mb-4 #{signage.name}
   .col-md-10.m-auto
     //- Nav Tabs
@@ -17,14 +17,14 @@ block content
       #details.tab-pane.fade.show.active(role='tabpanel', arialabelledby='details-tab').border.rounded.p-4
         h4.mb-4 Details
         form(method="POST", action="/admin/signage/" + signage._id)
-          #form-group.pb-4
-            label *Signage Name
+          .form-group.mb-4
+            label Signage Name*
             input.form-control(name='name', type='text', value=signage.name, required)
-          #form-group.pb-4
-            label *Description
+          .form-group.mb-4
+            label Description*
             textarea.form-control(name='desc', rows='3', required)= signage.desc
           hr.mb-4
-          a.btn.btn-secondary.mr-2(href='/admin/signage') Back
+          a.btn.btn-secondary.mr-2(href='javascript:history.go(-1)') Back
           button.btn.btn-primary(type='submit') Update
           button.btn.btn-danger.float-right(type='button', data-toggle='modal', data-target='#del-signage') Delete
         #del-signage.modal.fade(tabindex='-1', role='dialog', aria-labelledby='del-modal', aria-hidden='true')
@@ -67,7 +67,7 @@ block content
                       form(method='POST', action='/admin/signage/image/delete/' + signage._id + '/' + img)
                         button.btn.btn-danger Delete
         hr.mb-4
-        a.btn.btn-secondary.mr-2(href='/admin/signage') Back
+        a.btn.btn-secondary.mr-2(href='javascript:history.go(-1)') Back
       #geolocations.tab-pane.fade.active(role='tabpanel', arialabelledby='geolocations-tab').border.rounded.p-4
         h4 Geolocations
         form.form-inline.my-3.border.rounded(method="POST", action="/admin/geo/signage/add/"+ signage._id)
@@ -92,4 +92,4 @@ block content
                     form(method='POST', action='/admin/geo/'+ geo.type +'/'+geo.refid+'/delete/'+ geo._id)
                       button.btn.btn-danger Delete
         hr.mb-4
-        a.btn.btn-secondary.mr-2(href='/admin/signage') Back
+        a.btn.btn-secondary.mr-2(href='javascript:history.go(-1)') Back

@@ -1,9 +1,9 @@
 extends layout
 
 block content
-  h1.bd-title.my-4.text-center MUBC Dashboard
+  h1.bd-title.text-center MUBC Dashboard
   if user
-    p.bd-lead.text-center Please select a component to manage.
+    p.bd-lead.text-center.mb-4 Please select a component to manage.
     .list-group.col-md-5.m-auto
       .list-group-item.list-group-item-action
         .row
@@ -24,13 +24,11 @@ block content
             a.btn.btn-outline-primary.float-right.ml-1(href="/admin/signage") View
             a.btn.btn-outline-secondary.float-right(href="/admin/signage/add") Add
   else
-    p.bd-lead.text-center Please login to access MUBC Manager
+    p.bd-lead.text-center.mb-4 Please login to access MUBC Manager
     form.p-4.border.rounded.mx-5.col-md-5.m-auto(method="POST", action="/admin/login")
       h4.mb-4.text-center Login
-      #form-group.pb-4
-        label *Username
-        input.form-control(name='username', type='text', placeholder='Enter Username')
-      #form-group.pb-4
-        label *Password
-        input.form-control(name='password', type='password', placeholder='Enter Password')
+      .form-group.mb-3
+        input.form-control(name='username', type='text', placeholder='Enter Username', required)
+      .form-group.mb-3
+        input.form-control(name='password', type='password', placeholder='Enter Password', required)
       button.btn.btn-primary.btn-block(type='submit') Login
