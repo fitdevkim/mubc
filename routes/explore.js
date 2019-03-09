@@ -3,6 +3,7 @@ const router = express.Router();
 
 let About = require("../models/aboutsection");
 let Banksia = require("../models/banksia");
+let Signage = require("../models/signage");
 
 // Home Route
 router.get("/", (req, res) => {
@@ -28,6 +29,17 @@ router.get("/banksia/:id", (req, res) => {
       console.log(err);
     } else {
       res.render("explore/view_banksia", { b });
+    }
+  });
+});
+
+// Signage Single Route
+router.get("/signage/:id", (req, res) => {
+  Signage.findById(req.params.id, (err, s) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("explore/view_signage", { s });
     }
   });
 });

@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  h3#b-name.heading.p-4.m-0.text-center.bg-secondary.text-light= s.name
+  if s.img.length > 0
+    #carousel.carousel.slide(data-ride="carousel")
+      ol.carousel-indicators
+        for img, i in s.img
+          if i === 0
+            li.active(data-target="#carousel", data-slide-to=i)
+          else
+            li(data-target="#carousel", data-slide-to=i)
+      .carousel-inner
+        for img, i in s.img
+          if i === 0
+            .carousel-item.active
+              img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
+          else
+            .carousel-item
+              img.d-block.w-100(src="/uploads/"+img, style="height:300px;object-fit:cover;")
+      a.carousel-control-prev(href="#carousel", role="button", data-slide="prev")
+        span.carousel-control-prev-icon(aria-hidden="true")
+        span.sr-only Previous
+      a.carousel-control-next(href="#carousel", role="button", data-slide="next")
+        span.carousel-control-next-icon(aria-hidden="true")
+        span.sr-only Next
+  .container.bg-white  
+    p.m-0.py-3= s.desc
+  footer.text-light.py-4
+    p.text-center Banksia
+      span.font-weight-light Gazer 
+      | &copy; 2019
+block scripts
+  script(src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" ,integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==", crossorigin="")
+  script(src="/js/mapConfig.js")
+  script(src='/js/api.js')
+  script(src="/js/map.js")

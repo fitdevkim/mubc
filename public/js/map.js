@@ -96,6 +96,9 @@ class Map {
   }
 
   _getSignageMarkerPopUp(signage) {
-    return signage.name;
+    return `
+      <a href="/signage/${signage._id}">
+        <h6 class="text-center">${signage.name}</h6>
+      </a>`;
   }
 }
