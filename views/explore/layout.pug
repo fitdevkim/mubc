@@ -11,39 +11,42 @@ html(lang="en")
     link(rel='stylesheet', href='/css/style.css')
     link(rel="stylesheet", href="/css/menu.css")
   body.bg-dark
-    nav.navbar.navbar-expand-lg.navbar-light.bg-warning
-      .container
-        .d-flex.justify-content-start.align-items-center
-          .menu-wrap
-            input(type="checkbox", class="toggler")
-            .hamburger
-              div
-            .menu
-              div
-                div
-                  ul
-                    li
-                      a(href="/") Home
-                    li
-                      a(href="/banksia") Explore
-                    li
-                      a(href="/map") View Map
-                    li
-                      a(href="/about") More About
-                    li
-                      a(href="/about") Contact Us
-          a.navbar-brand.mb-0.ml-2.h1(href='/') BanksiaCourt  
-        .d-flex.justify-content-end.align-items-center
-          img(src="/img/murdoch-logo-hoz-white.svg", alt="", srcset="", height="47px")
-    //- .container  
-    block content
-    //- footer
-    //-   p.text-center Banksia
-    //-     span.font-weight-light Gazer 
-    //-     | &copy; 2019
-    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
-    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
-    block scripts
-    script(src='/js/main.js')
+    #barba-wrapper
+      .barba-container
+        nav.navbar.navbar-expand-lg.navbar-light.bg-warning
+          .container
+            .d-flex.justify-content-start.align-items-center
+              .menu-wrap
+                input(type="checkbox", class="toggler")
+                .hamburger
+                  div
+                .menu
+                  div
+                    div
+                      ul
+                        li
+                          a(href="/") Home
+                        li
+                          a(href="/banksia") Explore
+                        li
+                          a(href="/map") View Map
+                        li
+                          a(href="/about") More About
+                        li
+                          a(href="/about") Contact Us
+              a.navbar-brand.mb-0.ml-2.h1(href='/') BanksiaCourt  
+            .d-flex.justify-content-end.align-items-center
+              a(href='/')
+                img(src="/img/murdoch-logo-hoz-white.svg", alt="", srcset="", height="47px")
+        block content
+        //- footer
+        //-   p.text-center Banksia
+        //-     span.font-weight-light Gazer 
+        //-     | &copy; 2019
+        script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+        //- script(src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js", type="text/javascript")
+        block scripts
+        script(src='/js/main.js')
       

@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h2#b-name.heading.py-2.m-0.text-center.bg-secondary.text-light= b.name
+  h3#b-name.heading.p-4.m-0.text-center.bg-secondary.text-light= b.name
   #carousel.carousel.slide(data-ride="carousel")
     ol.carousel-indicators
       for img, i in b.img
@@ -16,7 +16,7 @@ block content
             img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
         else
           .carousel-item
-            img.d-block.w-100(src="/uploads/"+img, style="height:300px;object-fit:cover;")
+            img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
     a.carousel-control-prev(href="#carousel", role="button", data-slide="prev")
       span.carousel-control-prev-icon(aria-hidden="true")
       span.sr-only Previous

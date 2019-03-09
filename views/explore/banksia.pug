@@ -3,15 +3,15 @@ extends layout
 block content
   .container.bg-dark
     .px-1.py-2
-      input#search.form-control.my-2(type="search", name="search", placeholder="Search")
+      input#search.form-control.mb-3.mt-3(type="search", name="search", placeholder="Search")
       small.text-light Filter by Season:
-      .row.m-0.my-2
-        a#spring-btn.season.badge.badge-primary.mr-2(href="#") Spring
-        a#summer-btn.season.badge.badge-primary.mr-2(href="#") Summer
-        a#autumn-btn.season.badge.badge-primary.mr-2(href="#") Autumn
-        a#winter-btn.season.badge.badge-primary.mr-2(href="#") Winter
-        a#reset-btn.season.badge.badge-danger.mr-2(href="#") Reset
-    #banksia-list.banksia-list
+      .row.my-2.m-0
+        a#spring-btn.season.btn-sm.btn-primary.mr-2(href="#") Spring
+        a#summer-btn.season.btn-sm.btn-primary.mr-2(href="#") Summer
+        a#autumn-btn.season.btn-sm.btn-primary.mr-2(href="#") Autumn
+        a#winter-btn.season.btn-sm.btn-primary.mr-2(href="#") Winter
+        a#reset-btn.season.btn-sm.btn-danger.mr-2(href="#") Reset
+    #banksia-list.banksia-list.mt-3
       h4.p-2 Banksia List
       each page, i in pages
         .page(id = "page-"+ (i+1))

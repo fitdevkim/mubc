@@ -26,6 +26,18 @@ img.list-img {
   object-fit: cover;
 }
 
+.landing,
+.action {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action {
+  height: 80vh;
+}
+
 #mapid {
   height: 400px;
   width: 100%;
@@ -104,7 +116,8 @@ img.list-img {
   margin: 5px 10px;
   text-decoration: none;
   color: black;
-  height: 90px;
+  height: 70px;
+  justify-content: center;
 }
 
 .banksia-item img {
@@ -114,10 +127,11 @@ img.list-img {
 }
 
 .banksia-item span {
-  font-size: 1.2em;
+  font-size: 18px;
   flex: 1;
-  padding: 1.5em;
+  /* padding: 1.5em; */
   text-align: center;
+  align-self: center;
 }
 
 .banksia-item:hover {
@@ -125,4 +139,18 @@ img.list-img {
   cursor: pointer;
   text-decoration: none;
   color: black;
+}
+
+.slide-in {
+  animation: slide-in 0.5s ease forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    visibility: visible;
+  }
+  to {
+    transform: translateX(0%);
+  }
 }
