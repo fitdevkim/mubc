@@ -9,10 +9,7 @@ const router = express.Router();
 const storage = multer.diskStorage({
   destination: "./public/uploads",
   filename: function(req, file, cb) {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
+    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
   }
 });
 
@@ -51,9 +48,8 @@ router.get("/", tool.ensureAuthenticated, (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.render("admin/signage/signage", {
-        signages: signages
-      });
+      const pages = tool.assignToPages(signages, 10);
+      res.render("admin/signage/signage", { pages });
     }
   });
 });

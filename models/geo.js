@@ -1,3 +1,5 @@
+// goe.js (Geolocation Model)
+
 let mongoose = require("mongoose");
 
 // Geolocation schema
@@ -20,4 +22,4 @@ let geoSchema = mongoose.Schema({
   }
 });
 
-let Geo = (module.exports = mongoose.model("geo", geoSchema));
+module.exports = mongoose.model("geo", geoSchema);

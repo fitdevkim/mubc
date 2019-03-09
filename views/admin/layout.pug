@@ -5,6 +5,7 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title MUBC Management
+    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.7.2/css/all.css", integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", crossorigin="anonymous")
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
     link(rel="stylesheet", href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css", integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==",crossorigin="")
     link(rel='stylesheet', href='/css/style.css')
@@ -44,16 +45,9 @@ html(lang="en")
         p.text-center Banksia
           span.font-weight-light Gazer 
           | &copy; 2019
-      script(src='https://code.jquery.com/jquery-3.3.1.min.js', integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=', crossorigin='anonymous')
+      script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
       script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
       script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
-      script(src='/js/main.js')
-      if map
-        script(src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" ,integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==", crossorigin="")
-        script(src="/js/map.js")
-        script. 
-          initMap(#{map.lat}, #{map.lng}, "mapid")
-        if geos
-          each geo, i in geos
-            script. 
-              drawPoint(#{geo.lat},#{geo.lng},"Latitude: #{geo.lat}<br> Longtitude: #{geo.lng}<br><button style='color:white;' class='btn btn-danger btn-sm btn-block mt-1 delete-geo' data-toggle='modal' data-target='#geo-#{i}'>Delete Point</button>");
+      
+      block scripts
+      script(src='/js/admin.js')

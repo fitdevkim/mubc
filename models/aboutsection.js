@@ -1,6 +1,8 @@
-let mongoose = require('mongoose');
+// aboutsection.js (About Section Model)
 
-// About section schema
+let mongoose = require("mongoose");
+
+// About Section schema
 let aboutsectionSchema = mongoose.Schema({
   sectionType: {
     type: String,
@@ -16,4 +18,4 @@ let aboutsectionSchema = mongoose.Schema({
   }
 });
 
-let AboutSection = module.exports = mongoose.model('AboutSection', aboutsectionSchema);
+module.exports = mongoose.model("AboutSection", aboutsectionSchema);

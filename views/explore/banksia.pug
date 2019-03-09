@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  .container.bg-dark
+    .px-1.py-2
+      input#search.form-control.my-2(type="search", name="search", placeholder="Search")
+      small.text-light Filter by Season:
+      .row.m-0.my-2
+        a#spring-btn.season.badge.badge-primary.mr-2(href="#") Spring
+        a#summer-btn.season.badge.badge-primary.mr-2(href="#") Summer
+        a#autumn-btn.season.badge.badge-primary.mr-2(href="#") Autumn
+        a#winter-btn.season.badge.badge-primary.mr-2(href="#") Winter
+        a#reset-btn.season.badge.badge-danger.mr-2(href="#") Reset
+    #banksia-list.banksia-list
+      h4.p-2 Banksia List
+      each page, i in pages
+        .page(id = "page-"+ (i+1))
+          each banksia, j in page
+            .banksia-list-item
+              a.banksia-item.shadow-sm(href="/banksia/"+banksia._id)
+                input(type="hidden", name="seasons" value= banksia.flowerPeriod.toString())
+                if banksia.img[0] !== undefined
+                  img(src="/uploads/"+banksia.img[0])
+                else 
+                  img(src="/img/no-img.png")
+                span= banksia.name
+      ul.pagination.justify-content-center.mt-4
+        each page, i in pages
+          li.page-item(id="page-item-"+ (i+1))
+            a.page-link(href=("#banksia-list"))= i+1
+
+block scripts
+  script(src='/js/list.js')
+
+  

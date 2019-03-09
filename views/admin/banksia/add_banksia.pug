@@ -1,10 +1,11 @@
 extends ../layout
 
 block content
-  h1.mb-4.text-center Add Banksia
+  h1.text-center Add Banksia
+  p.mb-4.text-center Please enter the required fields in form and submit.
   .row
     .col-md-10.m-auto
-      form.p-4.border.rounded(method="POST", action="/admin/banksia/add", enctype="multipart/form-data")
+      form.px-4.py-3.border.shadow(method="POST", action="/admin/banksia/add", enctype="multipart/form-data")
         .form-group.mb-3
           label Banksia Name*
           input.form-control(name='name', type='text', placeholder='Enter Banksia Name', required)
@@ -17,18 +18,18 @@ block content
             input.form-control(name='noongarName', type='text', placeholder='Enter Noongar Name')  
         .form-group.mb-3
           label Banksia Description*
-          textarea.form-control(name='desc', rows='3', required)
+          textarea.form-control(name='desc', rows='3', placeholder='Enter Banksia Description', required)
         .form-row
           .form-group.mb-3.col-md-6
             label Flower Descripton*
-            textarea.form-control(name='flowerDesc', rows='3', required)
+            textarea.form-control(name='flowerDesc', rows='3', placeholder='Enter Flower Description', required)
           .form-group.mb-3.col-md-6
             label Habitat Description*
-            textarea.form-control(name='habitatDesc', rows='3', required)
+            textarea.form-control(name='habitatDesc', rows='3', placeholder='Enter Habitat Description', required)
         .form-row  
           .form-group.mb-3.col-md-6
             label Flowering Group*
-            select.form-control(name='group', required)
+            select#group.form-control(name='group', required)
               option Select one
               option(value="Gold") Gold
               option(value="Orange") Orange
@@ -38,7 +39,7 @@ block content
               option(value="Yellow") Yellow
           .form-group.mb-3.col-md-6
             label Other Group Name
-            input.form-control(name='otherGroupName', type='text', placeholder='Enter Group name')  
+            input#otherGroupName.form-control(name='otherGroupName', type='text', disabled)  
             small.form-text.text-muted If "Others" is selected
         .form-row
           .form-group.mb-3.col-md-6

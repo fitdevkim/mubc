@@ -1,4 +1,6 @@
-let mongoose = require('mongoose');
+// signage.js (Signage Model)
+
+let mongoose = require("mongoose");
 
 // Signage schema
 let signageSchema = mongoose.Schema({
@@ -16,4 +18,4 @@ let signageSchema = mongoose.Schema({
   }
 });
 
-let Signage = module.exports = mongoose.model('signage', signageSchema);
+module.exports = mongoose.model("signage", signageSchema);

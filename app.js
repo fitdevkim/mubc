@@ -86,14 +86,13 @@ app.get("*", (req, res, next) => {
   next();
 });
 
-// Home Route
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
 // Route Admin File
 let admin = require("./routes/admin/admin");
+let explore = require("./routes/explore");
+let api = require("./routes/api");
 app.use("/admin", admin);
+app.use("/", explore);
+app.use("/api", api);
 
 // Start Server
 app.listen(3000, () => {

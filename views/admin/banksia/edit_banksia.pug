@@ -29,7 +29,7 @@ block content
         .form-row  
           .form-group.mb-3.col-md-6
             label Group*
-            select.form-control(name='group', required)
+            select#group.form-control(name='group', required)
               option Select one
               option(value="Gold", selected=isGold) Gold
               option(value="Orange", selected=isOrange) Orange
@@ -40,7 +40,9 @@ block content
           .form-group.col-md-6
             label Other Flowering Group Name
             if isOthers
-            input.form-control(name='otherGroupName', type='text', value=(isOthers ? banksia.otherGroupName : ''))  
+              input#otherGroupName.form-control(name='otherGroupName', type='text', value=banksia.otherGroupName)  
+            else 
+              input#otherGroupName.form-control(name='otherGroupName', type='text', disabled) 
             small.form-text.text-muted If "Others" is selected
         .form-group.mb-4
           label Flowering Period

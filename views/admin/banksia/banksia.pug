@@ -1,19 +1,31 @@
 extends ../layout
 
 block content
-  h1.mb-4.text-center Banksia Management
+  h1.text-center Banksia Management
+  p.mb-4.text-center Select a banksia to view details.
   .row
-    .col-md-10.m-auto
-      .row.align-items-end
-        .col
-          //- form.form-inline.mb-2.float-right.my-lg-0(action="#", method="get")
-          //-   input.form-control.mr-sm-2(type="search", name="search", placeholder="Search")
-          //-   button.btn.btn-outline-secondary(type="submit") Search
-          a.btn.btn-outline-primary.float-left.mb-2(href='/admin/banksia/add') Add New Banksia
-      ul.list-group
-        each banksia, i in banksias
-          a.list-group-item.list-group-item-action.flex-column.align-items-start(href='/admin/banksia/'+banksia._id)
-            .d-flex.w-100.justify-content-between
-              h5.mb-1= banksia.name
-            p.mb-1.text-truncate= banksia.desc
-            
+    .col-md-6.m-auto
+      a.btn.btn-outline-primary.border-0.btn-block(href='/admin/banksia/add')
+          i.fas.fa-plus 
+          | &nbsp; Add New Banksia
+      input#search.form-control.mb-3(type="search", name="search", placeholder="Search")
+      ul#b-list.list-group
+        each page, i in pages
+          .page(id="page-"+ (i+1))
+            each banksia, j in page
+              a.list-group-item.list-group-item-action(href='/admin/banksia/'+banksia._id)
+                .d-flex.align-items-center
+                  .w-100
+                    h5.text-center.mb-0= banksia.name
+                  if banksia.img[0] !== undefined
+                    img.d-block.img-thumbnail.img-fluid.list-img(src="/uploads/"+banksia.img[0])
+                  else 
+                    img.d-block.img-thumbnail.img-fluid.list-img(src="/img/no-img.png")
+        else
+          span.mx-auto No Banksias found.
+      ul.pagination.justify-content-center.mt-4
+        each page, i in pages
+          li.page-item(id="page-item-"+ (i+1))
+            a.page-link(href=("#b-list"))= i+1
+block scripts
+  script(src="/js/list.js")

@@ -4,22 +4,20 @@ block content
   .col-md-10.m-auto
     h1.text-center.mt-4 About Section Management
     p.text-center Select a section to edit section content.
-    ul#btab.nav.nav-pills.mb-3(role='tablist')
+    ul#btab.nav.nav-pills.mb-2(role='tablist')
       each aboutSect, i in aboutSects
         li.nav-item
           if i == 0
             a.nav-link.active(id=aboutSect.sectionType+'-tab', data-toggle='pill', href='#' +aboutSect.sectionType, role='tab', aria-controls=aboutSect.sectionType, aria-selected='true')=aboutSect.name
           else
             a.nav-link(id=aboutSect.sectionType+'-tab',data-toggle='pill', href='#' +aboutSect.sectionType, role='tab', aria-controls=aboutSect.sectionType, aria-selected='true')=aboutSect.name
-    .tab-content
+    .tab-content.px-4.py-3.shadow.border
       each aboutSect, i in aboutSects
         if i == 0
-          .tab-pane.fade.show.active(id=aboutSect.sectionType,  role='tabpanel', arialabelledby=aboutSect.sectionType+'-tab').border.rounded.p-4
-            h4= aboutSect.name
-            form.p-4.border.rounded(method='POST', action='/admin/aboutsects/edit/' + aboutSect._id)
-              .input-group.mb-3
-                .input-group-prepend
-                  label.input-group-text Section Name*
+          .tab-pane.fade.show.active(id=aboutSect.sectionType,  role='tabpanel', arialabelledby=aboutSect.sectionType+'-tab')
+            form(method='POST', action='/admin/aboutsects/edit/' + aboutSect._id)
+              .form-group.mb-3
+                label Section Name*
                 input.form-control(name='name', type='text', value=aboutSect.name)
               .form-group.mb-3
                 label Section Description*
@@ -28,12 +26,10 @@ block content
               button.btn.btn-primary(type='submit') Update
               label.float-right.small *Required
         else
-          .tab-pane.fade(id=aboutSect.sectionType, role='tabpanel', arialabelledby=aboutSect.sectionType+'-tab').border.rounded.p-4
-            h4= aboutSect.name
-            form.p-4.border.rounded(method='POST', action='/admin/aboutsects/edit/' + aboutSect._id)
-              .input-group.mb-3
-                .input-group-prepend
-                  label.input-group-text Section Name*
+          .tab-pane.fade(id=aboutSect.sectionType, role='tabpanel', arialabelledby=aboutSect.sectionType+'-tab')
+            form(method='POST', action='/admin/aboutsects/edit/' + aboutSect._id)
+              .form-group.mb-3
+                label Section Name*
                 input.form-control(name='name', type='text', value=aboutSect.name)
               .form-group.mb-3
                 label Section Description*

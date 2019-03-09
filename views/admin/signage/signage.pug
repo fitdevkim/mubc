@@ -1,18 +1,31 @@
 extends ../layout
 
 block content
+  h1.text-center Signage Management
+  p.mb-4.text-center Select a signage to edit details.
   .row
-    .col-md-10.m-auto
-      h1.text-center.my-4 Signage Management
-      .row.align-items-end
-        .col
-          //- form.form-inline.mb-2.float-right.my-lg-0(action="#", method="get")
-          //-   input.form-control.mr-sm-2(type="search", name="search", placeholder="Search")
-          //-   button.btn.btn-outline-secondary(type="submit") Search
-          a.btn.btn-outline-primary.float-left.mb-2(href='/admin/signage/add') Add New Signage
-      .list-group
-        each signage, i in signages
-          a.list-group-item.list-group-item-action.flex-column.align-items-start(href='/admin/signage/' + signage._id)
-            .d-flex.w-100.justify-content-between
-              h5.mb-1= signage.name
-            p.mb-1.text-truncate= signage.desc
+    .col-md-6.m-auto
+      a.btn.btn-outline-primary.border-0.btn-block(href='/admin/signage/add')
+          i.fas.fa-plus 
+          | &nbsp; Add New Signage
+      input#search.form-control.mb-3(type="search", name="search", placeholder="Search")
+      ul#b-list.list-group
+        each page, i in pages
+          .page(id="page-"+ (i+1))
+            each signage, j in page
+              a.list-group-item.list-group-item-action(href='/admin/signage/'+signage._id)
+                .d-flex.align-items-center
+                  .w-100
+                    h5.text-center.mb-0= signage.name
+                  if signage.img[0] !== undefined
+                    img.d-block.img-thumbnail.img-fluid.list-img(src="/uploads/"+signage.img[0])
+                  else 
+                    img.d-block.img-thumbnail.img-fluid.list-img(src="/img/no-img.png")
+        else
+          span.mx-auto No Signages found.
+      ul.pagination.justify-content-center.mt-4
+        each page, i in pages
+          li.page-item(id="page-item-"+ (i+1))
+            a.page-link(href=("#b-list"))= i+1
+block scripts
+  script(src="/js/list.js")

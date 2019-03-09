@@ -23,7 +23,7 @@ router.post("/login", (req, res, next) => {
 
 // User Change Password Route
 router.get("/updatePassword", tool.ensureAuthenticated, (req, res) => {
-  res.render("admin/user-control/updatepw");
+  res.render("admin/user-control/update_pw");
 });
 
 // User Update Password POST Route
@@ -76,12 +76,10 @@ router.get("/logout", (req, res) => {
 let banksias = require("./banksia");
 let aboutsects = require("./aboutSect");
 let signages = require("./signage");
-let user = require("./user");
 let geos = require("./geo");
 router.use("/banksia", banksias);
 router.use("/aboutsects", aboutsects);
 router.use("/signage", signages);
-router.use("/user", user);
 router.use("/geo", geos);
 
 module.exports = router;

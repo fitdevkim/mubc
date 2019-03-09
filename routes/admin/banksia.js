@@ -9,10 +9,7 @@ const router = express.Router();
 const storage = multer.diskStorage({
   destination: "./public/uploads",
   filename: function(req, file, cb) {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
+    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
   }
 });
 
@@ -51,9 +48,8 @@ router.get("/", tool.ensureAuthenticated, (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.render("admin/banksia/banksia", {
-        banksias: banksias
-      });
+      const pages = tool.assignToPages(banksias, 10);
+      res.render("admin/banksia/banksia", { pages });
     }
   }).sort({ name: 1 });
 });
@@ -117,12 +113,8 @@ router.post("/add", (req, res) => {
         fname = req.file.filename;
         req.checkBody("name", "Name is required.").notEmpty();
         req.checkBody("desc", "Banksia description is required.").notEmpty();
-        req
-          .checkBody("habitatDesc", "Habitat description is required.")
-          .notEmpty();
-        req
-          .checkBody("flowerDesc", "Flower Description is required.")
-          .notEmpty();
+        req.checkBody("habitatDesc", "Habitat description is required.").notEmpty();
+        req.checkBody("flowerDesc", "Flower Description is required.").notEmpty();
         req.checkBody("group", "Flowering group is required.").notEmpty();
         if (req.body.group == "Others") {
           req

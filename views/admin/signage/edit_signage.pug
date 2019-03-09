@@ -13,8 +13,9 @@ block content
       li.nav-item
         a#geolocations-tab.nav-link(data-toggle='pill', href='#geolocations', role='tab', aria-controls='geolocations', aria-selected='true') Geolocations
     //- Tab panels
-    .tab-content
-      #details.tab-pane.fade.show.active(role='tabpanel', arialabelledby='details-tab').border.rounded.p-4
+    .tab-content.border.shadow.p-4
+      //- DETAILS TAB PANEL
+      #details.tab-pane.fade.show.active(role='tabpanel', arialabelledby='details-tab')
         h4.mb-4 Details
         form(method="POST", action="/admin/signage/" + signage._id)
           .form-group.mb-4
@@ -39,7 +40,8 @@ block content
               .modal-footer
                 button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                 button.btn.btn-danger.delete-signage(type='button', href='#', data-id=signage._id) Delete
-      #images.tab-pane.fade(role='tabpanel', arialabelledby='images-tab').border.rounded.p-4
+      //- IMAGES TAB PANEL
+      #images.tab-pane.fade(role='tabpanel', arialabelledby='images-tab')
         .row.align-items-end
           .col
             h4.float-left Images
@@ -66,17 +68,20 @@ block content
                       button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                       form(method='POST', action='/admin/signage/image/delete/' + signage._id + '/' + img)
                         button.btn.btn-danger Delete
+          else
+            span.mx-auto.mt-4 No images found.
         hr.mb-4
         a.btn.btn-secondary.mr-2(href='javascript:history.go(-1)') Back
+      //- GEOLOCATIONS TAB PANEL
       #geolocations.tab-pane.fade.active(role='tabpanel', arialabelledby='geolocations-tab').border.rounded.p-4
         h4 Geolocations
-        form.form-inline.my-3.border.rounded(method="POST", action="/admin/geo/signage/add/"+ signage._id)
+        form.form-inline.my-3.border(method="POST", action="/admin/geo/signage/add/"+ signage._id)
           label.m-2 Latitude
           input.form-control.m-2(name='lat', type='number', step='any' placeholder='Enter Latitude')
           label.m-2 Longtitude
           input.form-control.m-2(name='lng', type='number', step='any' placeholder='Enter Latitude')
           button.btn.btn-outline-primary.m-2(type='submit') Add Point    
-        #mapid.border.rounded
+        #mapid.border.shadow
           each geo, i in geos
             .modal.fade(id='geo-'+i, tabindex='-1', role='dialog', aria-labelledby=geo, aria-hidden='true')
               .modal-dialog(role='document')
@@ -93,3 +98,8 @@ block content
                       button.btn.btn-danger Delete
         hr.mb-4
         a.btn.btn-secondary.mr-2(href='javascript:history.go(-1)') Back
+block scripts
+  script(src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" ,integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==", crossorigin="")
+  script(src="/js/mapConfig.js")
+  script(src="/js/api.js")
+  script(src="/js/map.js")

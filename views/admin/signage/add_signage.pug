@@ -3,13 +3,13 @@ extends ../layout
 block content
   h1.text-center.mb-4 Add Signage
   .col-md-8.m-auto
-    form.p-4.border.rounded(method="POST", action="/admin/signage/add", enctype="multipart/form-data")
+    form.p-4.border.shadow(method="POST", action="/admin/signage/add", enctype="multipart/form-data")
       .form-group.mb-4
         label Signage Name*
         input.form-control(name='name', type='text', placeholder='Enter Signage Name', required)
       .form-group.mb-4
         label Description*
-        textarea.form-control(name='desc', rows='4', required)
+        textarea.form-control(name='desc', rows='4', placeholder='Enter Signage Description', required)
       .form-group.mb-4
         label Upload Signage Image
         .form-group

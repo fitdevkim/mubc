@@ -1,3 +1,6 @@
+// passport.js (Passport Configuration)
+// NOTICE: You may configure the authentication strategy specifications accordingly here.
+
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");

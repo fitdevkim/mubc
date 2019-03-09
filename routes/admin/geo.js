@@ -28,11 +28,7 @@ router.post("/:type/add/:id", (req, res) => {
   if (!isBounds(point, bounds)) {
     req.flash(
       "danger",
-      "Geolocation Point (" +
-        point.lat +
-        "," +
-        point.lng +
-        ") is not within bounds"
+      "Geolocation Point (" + point.lat + "," + point.lng + ") is not within bounds"
     );
     res.redirect("/admin/" + type + "/" + id);
   } else {

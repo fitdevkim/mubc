@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .container.py-3.bg-warning
+    #explore-map
+      #legend Legend
+      #locate-me Locate Me
+block scripts
+  script(src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" ,integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==", crossorigin="")
+  script(src="/js/mapConfig.js")
+  script(src='/js/api.js')
+  script(src="/js/map.js")

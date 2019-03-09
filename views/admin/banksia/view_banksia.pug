@@ -12,8 +12,9 @@ block content
       li.nav-item
         a#geolocations-tab.nav-link(data-toggle='pill', href='#geolocations', role='tab', aria-controls='geolocations', aria-selected='true') Geolocations
     //- Tab panels
-    .tab-content
-      #details.tab-pane.fade.show.active(role='tabpanel', arialabelledby='details-tab').border.rounded.p-4
+    .tab-content.border.shadow.p-4
+      //- DETAILS TAB PANEL
+      #details.tab-pane.fade.show.active(role='tabpanel', arialabelledby='details-tab')
         h4.mb-4 Details
         dl.row
           if cname
@@ -48,18 +49,19 @@ block content
               .modal-footer
                 button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                 button.btn.btn-danger.delete-banksia(type='button', href='#', data-id=banksia._id) Delete
-      #images.tab-pane.fade(role='tabpanel', arialabelledby='images-tab').border.rounded.p-4
+      //- IMAGES TAB PANEL
+      #images.tab-pane.fade(role='tabpanel', arialabelledby='images-tab')
         .row.align-items-end
           .col
             h4.float-left Images
-            form.form-inline.float-right.my-lg-0.border.rounded(method="POST", action="/admin/banksia/image/upload/"+ banksia._id, enctype="multipart/form-data")
+            form.form-inline.float-right.my-lg-0.border(method="POST", action="/admin/banksia/image/upload/"+ banksia._id, enctype="multipart/form-data")
               .form-group
                 input.form-control-file.p-1(name='banksiaImg', type='file', required)
               button.btn.btn-outline-dark(type='submit') Upload
         .row.p-4
           each img, i in banksia.img
             .col-md-4.p-2
-              img.img-thumbnail.rounded.mx-auto.d-block(src="/uploads/" + img, alt="")
+              img.img-thumbnail.mx-auto.d-block(src="/uploads/" + img, alt="")
               button.btn.btn-danger.btn-block.mt-4(data-toggle='modal', data-target='#img-'+i) Delete
               .modal.fade(id='img-'+i, tabindex='-1', role='dialog', aria-labelledby=img, aria-hidden='true')
                 .modal-dialog(role='document')
@@ -75,17 +77,20 @@ block content
                       button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                       form(method='POST', action='/admin/banksia/image/delete/' + banksia._id + '/' + img)
                         button.btn.btn-danger Delete
+          else
+            span.mx-auto.mt-4 No images found.
         hr.mb-4
         a.btn.btn-secondary(href='javascript:history.go(-1)') Back
-      #geolocations.tab-pane.fade.active(role='tabpanel', arialabelledby='geolocations-tab').border.rounded.p-4
+      //- GEOLOCATIONS TAB PANEL
+      #geolocations.tab-pane.fade.active(role='tabpanel', arialabelledby='geolocations-tab')
         h4 Geolocations
-        form.form-inline.my-3.border.rounded(method="POST", action="/admin/geo/banksia/add/"+ banksia._id)
+        form.form-inline.my-3.border(method="POST", action="/admin/geo/banksia/add/"+ banksia._id)
           label.m-2 Latitude
           input.form-control.m-2(name='lat', type='number', step='any', placeholder='Enter Latitude', required)
           label.m-2 Longitude
           input.form-control.m-2(name='lng', type='number', step='any', placeholder='Enter Longitude', required)
           button.btn.btn-outline-primary.m-2(type='submit') Add Point
-        #mapid.border.rounded
+        #mapid.border.shadow
           each geo, i in geos
             .modal.fade(id='geo-'+i, tabindex='-1', role='dialog', aria-labelledby=geo, aria-hidden='true')
               .modal-dialog(role='document')
@@ -102,3 +107,8 @@ block content
                       button.btn.btn-danger Delete
         hr.mb-4
         a.btn.btn-secondary(href='javascript:history.go(-1)') Back
+block scripts
+  script(src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" ,integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==", crossorigin="")
+  script(src="/js/mapConfig.js")
+  script(src="/js/api.js")
+  script(src="/js/map.js")
