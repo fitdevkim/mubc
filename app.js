@@ -95,6 +95,6 @@ app.use("/", explore);
 app.use("/api", api);
 
 // Start Server
-app.listen(3000, () => {
+app.listen(80, () => {
   console.log("Server has started...");
 });
