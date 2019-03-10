@@ -21,7 +21,7 @@ class MUBC_API {
       path = `/api/${this.type}/${id}`;
     }
     // Fetches the api from path
-    const resp = await fetch(path);
+    const resp = await fetch(path, { mode: "cors" });
     // Sets response data as a JSON object
     const respData = await resp.json();
     // Returns response data
