@@ -61,16 +61,6 @@ a.landing-btn:active {
   height: 80vh;
 }
 
-/* Banksia Page */
-.season-filter {
-  display: flex;
-  justify-content: space-between;
-}
-
-.season img {
-  height: 60px;
-}
-
 /* Map styles */
 
 #mapid {
@@ -118,6 +108,18 @@ a.landing-btn:active {
   cursor: pointer;
   opacity: 0.9;
 }
+
+a.marker-popup {
+  text-decoration: none;
+  font-weight: bold;
+  width: 100px;
+}
+
+a.marker-popup span {
+  display: block;
+}
+
+/* Alerts */
 
 .alert-error {
   color: #a94442;
@@ -174,6 +176,19 @@ a.landing-btn:active {
   cursor: pointer;
   text-decoration: none;
   color: black;
+}
+
+input#search {
+  outline: none;
+}
+
+.season-filter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.season img {
+  height: 60px;
 }
 
 /* About section */

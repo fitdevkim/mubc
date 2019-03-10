@@ -8,10 +8,10 @@ if (_checkPath("/banksia")) {
   document.addEventListener("DOMContentLoaded", e => {
     const body = document.querySelector("body");
     body.style.backgroundColor = "#434350";
-    // body.style.backgroundImage = "url('../img/Murdoch_banksia.jpeg')";
+    body.style.backgroundImage = "url('../img/Dark Background_Small-02.jpg')";
     body.style.backgroundRepeat = "no-repeat";
-    body.style.backgroundSize = "contain, cover";
-    body.style.backgroundPosition = "bottom right";
+    body.style.backgroundSize = "cover";
+    body.style.backgroundPosition = "center center";
     body.style.height = "100vh";
   });
 

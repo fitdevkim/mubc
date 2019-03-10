@@ -92,33 +92,29 @@ const _getAdminMarkerPopUp = function(geo, index) {
 
 const _getBanksiaMarkerPopUp = function(banksia) {
   return `
-      <a href="/banksia/${banksia._id}">
-        <h6 class="text-center">${banksia.name}</h6>
-        <img src="/uploads/${banksia.img[0]}" class="img-thumbnail">
+      <a class="marker-popup" href="/banksia/${banksia._id}">
+        <span>${banksia.name}</span>
+        <img src="/uploads/${banksia.img[0]}", class="img-thumbnail">
       </a>`;
 };
 
 const _getSignageMarkerPopUp = function(signage) {
   return `
-      <a href="/signage/${signage._id}">
-        <h6 class="text-center">${signage.name}</h6>
+      <a class="marker-popup" href="/signage/${signage._id}">
+        <span>${signage.name}</span>
       </a>`;
 };
 
 const banksiaIcon = L.icon({
-  iconUrl: "/img/Signage-11.png",
+  iconUrl: "/img/signage option-21.png",
 
-  iconSize: [35, 53.7], // size of the icon
-  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-  shadowAnchor: [4, 62], // the same for the shadow
-  popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+  iconSize: [35, 32.7], // size of the icon
+  popupAnchor: [0, -16.35] // point from which the popup should open relative to the iconAnchor
 });
 
 const signageIcon = L.icon({
-  iconUrl: "/img/Signage-12.png",
+  iconUrl: "/img/signage option-22.png",
 
-  iconSize: [35, 53.7], // size of the icon
-  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-  shadowAnchor: [4, 62], // the same for the shadow
-  popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+  iconSize: [35, 36.3], // size of the icon
+  popupAnchor: [0, -18.15] // point from which the popup should open relative to the iconAnchor
 });
