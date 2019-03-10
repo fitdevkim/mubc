@@ -60,12 +60,14 @@ class Map {
   paintMarker(geo, obj, index) {
     const marker = L.marker([geo.lat, geo.lng]);
     if (this.type === "admin") {
-      marker.bindPopup(this._getAdminMarkerPopUp(geo, index));
+      marker.bindPopup(_getAdminMarkerPopUp(geo, index));
     } else if (this.type === "explore") {
       if (geo.type === "banksia") {
-        marker.bindPopup(this._getBanksiaMarkerPopUp(obj));
+        marker.bindPopup(_getBanksiaMarkerPopUp(obj));
+        marker.setIcon(banksiaIcon);
       } else if (geo.type === "signage") {
-        marker.bindPopup(this._getSignageMarkerPopUp(obj));
+        marker.bindPopup(_getSignageMarkerPopUp(obj));
+        marker.setIcon(signageIcon);
       }
     }
     marker.addTo(this.map);
@@ -74,9 +76,10 @@ class Map {
   locateUser() {
     this.map.locate({ setView: true });
   }
+}
 
-  _getAdminMarkerPopUp(geo, index) {
-    return `
+const _getAdminMarkerPopUp = function(geo, index) {
+  return `
       Latitude: ${geo.lat}<br> 
       Longtitude: ${geo.lng}<br>
       <button 
@@ -85,20 +88,37 @@ class Map {
         data-toggle='modal' 
         data-target='#geo-${index}'
       >Delete Point</button>`;
-  }
+};
 
-  _getBanksiaMarkerPopUp(banksia) {
-    return `
+const _getBanksiaMarkerPopUp = function(banksia) {
+  return `
       <a href="/banksia/${banksia._id}">
         <h6 class="text-center">${banksia.name}</h6>
         <img src="/uploads/${banksia.img[0]}" class="img-thumbnail">
       </a>`;
-  }
+};
 
-  _getSignageMarkerPopUp(signage) {
-    return `
+const _getSignageMarkerPopUp = function(signage) {
+  return `
       <a href="/signage/${signage._id}">
         <h6 class="text-center">${signage.name}</h6>
       </a>`;
-  }
-}
+};
+
+const banksiaIcon = L.icon({
+  iconUrl: "/img/Signage-11.png",
+
+  iconSize: [35, 53.7], // size of the icon
+  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62], // the same for the shadow
+  popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+const signageIcon = L.icon({
+  iconUrl: "/img/Signage-12.png",
+
+  iconSize: [35, 53.7], // size of the icon
+  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62], // the same for the shadow
+  popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});

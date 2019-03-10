@@ -5,6 +5,16 @@
 
 // Check if path is /banksia
 if (_checkPath("/banksia")) {
+  document.addEventListener("DOMContentLoaded", e => {
+    const body = document.querySelector("body");
+    body.style.backgroundColor = "#434350";
+    // body.style.backgroundImage = "url('../img/Murdoch_banksia.jpeg')";
+    body.style.backgroundRepeat = "no-repeat";
+    body.style.backgroundSize = "contain, cover";
+    body.style.backgroundPosition = "bottom right";
+    body.style.height = "100vh";
+  });
+
   switch (_getPathLength()) {
     case 2: // Banksia List Page
       // Init Banksia List
@@ -22,8 +32,9 @@ if (_checkPath("/banksia")) {
       });
       seasonFilters.forEach(season => {
         season.addEventListener("click", e => {
-          const period = e.target.textContent;
-          list.filter(period, "Reset", listItem => {
+          const period = e.target.alt;
+          console.log(period);
+          list.filter(period, "reset", listItem => {
             return listItem.firstChild.firstChild.value;
           });
           search.value = "";
@@ -55,79 +66,52 @@ if (_checkPath("/map")) {
   document
     .getElementById("locate-me")
     .addEventListener("click", e => map.locateUser());
-  // map.locateUser();
+
+  document.addEventListener("DOMContentLoaded", e => {
+    const body = document.querySelector("body");
+    body.style.backgroundColor = "#ffc107";
+    // body.style.backgroundImage = "url('../img/Murdoch_banksia.jpeg')";
+    body.style.backgroundRepeat = "no-repeat";
+    body.style.backgroundSize = "contain, cover";
+    body.style.backgroundPosition = "bottom right";
+    body.style.height = "100vh";
+  });
 }
 
 // ------------------------------------------------------------------------- //
-// PAGE TRANSITION WITH BARBA JS
-// document.addEventListener("DOMContentLoaded", e => {
-//   Barba.Pjax.start();
-// });
+// EXPLORE ABOUT EVENT LISTENERS
 
-// var FadeTransition = Barba.BaseTransition.extend({
-//   start: function() {
-//     /**
-//      * This function is automatically called as soon the Transition starts
-//      * this.newContainerLoading is a Promise for the loading of the new container
-//      * (Barba.js also comes with an handy Promise polyfill!)
-//      */
+if (_checkPath("/about")) {
+  document.addEventListener("DOMContentLoaded", e => {
+    const body = document.querySelector("body");
+    body.style.backgroundColor = "#7db9ba";
+    body.style.backgroundImage = "url('../img/Murdoch_banksia.jpeg')";
+    body.style.backgroundRepeat = "no-repeat";
+    body.style.backgroundSize = "contain, cover";
+    body.style.backgroundPosition = "bottom right";
+    body.style.height = "100vh";
+  });
+}
 
-//     // As soon the loading is finished and the old page is faded out, let's fade the new page
-//     Promise.all([this.newContainerLoading, this.fadeOut()]).then(
-//       this.fadeIn.bind(this)
-//     );
-//   },
+// ------------------------------------------------------------------------- //
+// BACKGROUNDS
 
-//   fadeOut: function() {
-//     /**
-//      * this.oldContainer is the HTMLElement of the old Container
-//      */
-
-//     return $(this.oldContainer)
-//       .animate({ opacity: 0 })
-//       .promise();
-//   },
-
-//   fadeIn: function() {
-//     /**
-//      * this.newContainer is the HTMLElement of the new Container
-//      * At this stage newContainer is on the DOM (inside our #barba-container and with visibility: hidden)
-//      * Please note, newContainer is available just after newContainerLoading is resolved!
-//      */
-
-//     var _this = this;
-//     var $el = $(this.newContainer);
-
-//     $(this.oldContainer).hide();
-
-//     $el.css({
-//       visibility: "visible",
-//       opacity: 0
-//     });
-
-//     $el.animate({ opacity: 1 }, 400, function() {
-//       /**
-//        * Do not forget to call .done() as soon your transition is finished!
-//        * .done() will automatically remove from the DOM the old Container
-//        */
-
-//       _this.done();
-//     });
-//   }
-// });
-
-// /**
-//  * Next step, you have to tell Barba to use the new Transition
-//  */
-
-// Barba.Pjax.getTransition = function() {
-//   /**
-//    * Here you can use your own logic!
-//    * For example you can use different Transition based on the current page or link...
-//    */
-
-//   return FadeTransition;
-// };
+if (_checkAbsolutePath("/")) {
+  document.addEventListener("DOMContentLoaded", e => {
+    const body = document.querySelector("body");
+    const btn = document.querySelector(".landing-btn");
+    const toggler = document.querySelector(".toggler");
+    body.style.backgroundColor = "#7db9ba";
+    body.style.backgroundImage = "url('../img/Murdoch_banksia.jpeg')";
+    body.style.backgroundRepeat = "no-repeat";
+    body.style.backgroundSize = "contain, cover";
+    body.style.backgroundPosition = "bottom right";
+    body.style.height = "100vh";
+    btn.addEventListener("click", e => {
+      toggler.checked = true;
+    });
+  });
+}
 
 // ------------------------------------------------------------------------- //
 // UTILITY FUNCTIONS
@@ -135,6 +119,11 @@ if (_checkPath("/map")) {
 // Checks if the current window location is the desired pathname
 function _checkPath(pathname) {
   return window.location.pathname.toLowerCase().indexOf(pathname) != -1;
+}
+
+// Checks if the absolute current window location is the desired pathname
+function _checkAbsolutePath(pathname) {
+  return window.location.pathname === pathname;
 }
 
 // Returns the num of paths(/) in the window location pathname

@@ -1,3 +1,8 @@
+/* Admin */
+.bg-none {
+  background: none;
+}
+
 .btn,
 .nav-pills .nav-link,
 .form-control,
@@ -26,9 +31,27 @@ img.list-img {
   object-fit: cover;
 }
 
-.landing,
+/* Landing Page */
+.landing-container {
+  margin-top: 15vh;
+}
+
+.landing-btn {
+  background-color: #ffc80a;
+  border: none;
+  padding: 8px 35px;
+  margin-top: 27vh;
+  /* color: #fff; */
+}
+
+.landing-btn:hover,
+a.landing-btn:active {
+  background-color: #547b6d;
+  color: #fff;
+}
+
 .action {
-  height: 70vh;
+  height: 65vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,6 +60,18 @@ img.list-img {
 .action {
   height: 80vh;
 }
+
+/* Banksia Page */
+.season-filter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.season img {
+  height: 60px;
+}
+
+/* Map styles */
 
 #mapid {
   height: 400px;
@@ -141,16 +176,31 @@ img.list-img {
   color: black;
 }
 
-.slide-in {
-  animation: slide-in 0.5s ease forwards;
+/* About section */
+.about-section {
+  margin: auto;
+  height: 65vh;
+}
+.about-section-title {
+  text-align: right;
+  font-size: 45px;
+  font-weight: bold;
+  padding-right: 15px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 0.83;
+}
+.about-section-body {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 25px;
+  border-top-left-radius: 25px;
 }
 
-@keyframes slide-in {
-  from {
-    transform: translateX(100%);
-    visibility: visible;
-  }
-  to {
-    transform: translateX(0%);
-  }
+img.about-nav {
+  background-color: #fff;
+  height: 60px;
+  border-radius: 50%;
+}
+
+li.nav-item a.active img.about-nav {
+  border: red solid 3px;
 }
