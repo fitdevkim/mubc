@@ -1,35 +1,26 @@
 // main.js (Front-End Javascript)
 
 // Test animation
-document.addEventListener("DOMContentLoaded", e => {
-  const bodyStyle = document.body.style;
-  bodyStyle.visibility = "hidden";
-  bodyStyle.opacity = "0";
-  bodyStyle.transition = "none";
-  setTimeout(() => {
-    bodyStyle.visibility = "visible";
-    bodyStyle.opacity = "1";
-    bodyStyle.transition = "0.5s opacity";
-  }, 400);
-});
+// document.addEventListener("DOMContentLoaded", e => {
+//   const bodyStyle = document.body.style;
+//   // bodyStyle.visibility = "hidden";
+//   bodyStyle.opacity = "0";
+//   bodyStyle.transition = "none";
+//   setTimeout(() => {
+//     // bodyStyle.visibility = "visible";
+//     bodyStyle.opacity = "1";
+//     bodyStyle.transition = "0.5s opacity";
+//   }, 600);
+// });
 
 // ------------------------------------------------------------------------- //
 // LANDING PAGE EVENTS
 
 if (_checkAbsolutePath("/")) {
-  document.addEventListener("DOMContentLoaded", e => {
-    const body = document.body;
-    const btn = document.querySelector(".landing-btn");
-    const toggler = document.querySelector(".toggler");
-    body.style.backgroundColor = "#7db9ba";
-    body.style.backgroundImage = "url('../img/Murdoch_banksia.jpeg')";
-    body.style.backgroundRepeat = "no-repeat";
-    body.style.backgroundSize = "contain, cover";
-    body.style.backgroundPosition = "bottom right";
-    body.style.height = "100vh";
-    btn.addEventListener("click", e => {
-      toggler.checked = true;
-    });
+  const btn = document.querySelector(".landing-btn");
+  const toggler = document.querySelector(".toggler");
+  btn.addEventListener("click", e => {
+    toggler.checked = true;
   });
 }
 
@@ -38,16 +29,6 @@ if (_checkAbsolutePath("/")) {
 
 // Check if path is /banksia
 if (_checkPath("/banksia")) {
-  document.addEventListener("DOMContentLoaded", e => {
-    const body = document.querySelector("body");
-    body.style.backgroundColor = "#434350";
-    body.style.backgroundImage = "url('../img/Dark Background_Small-02.jpg')";
-    body.style.backgroundRepeat = "no-repeat";
-    body.style.backgroundSize = "cover";
-    body.style.backgroundPosition = "center center";
-    body.style.height = "100vh";
-  });
-
   switch (_getPathLength()) {
     case 2: // Banksia List Page
       // Init Banksia List
@@ -80,10 +61,10 @@ if (_checkPath("/banksia")) {
       // Get Banksia ID
       const id = _getPathPart(2);
       // On Page Load
-      document.addEventListener("DOMContentLoaded", e => {
-        // Load the Map Component
-        map.load(id);
-      });
+      // document.addEventListener("DOMContentLoaded", e => {
+      // Load the Map Component
+      map.load(id);
+      // });
       break;
     default:
       break;
@@ -95,19 +76,13 @@ if (_checkPath("/banksia")) {
 
 if (_checkPath("/map")) {
   const map = new Map("explore", "explore-map");
-  map.load();
-  document
-    .getElementById("locate-me")
-    .addEventListener("click", e => map.locateUser());
 
   document.addEventListener("DOMContentLoaded", e => {
-    const body = document.body;
-    body.style.backgroundColor = "#ffc107";
-    // body.style.backgroundImage = "url('../img/Murdoch_banksia.jpeg')";
-    body.style.backgroundRepeat = "no-repeat";
-    body.style.backgroundSize = "contain, cover";
-    body.style.backgroundPosition = "bottom right";
-    body.style.height = "100vh";
+    map.load();
+    document
+      .getElementById("locate-me")
+      .addEventListener("click", e => map.locateUser());
+    // document.body.style.backgroundColor = "#f9d63c";
   });
 }
 
@@ -116,30 +91,24 @@ if (_checkPath("/map")) {
 
 if (_checkPath("/about")) {
   document.addEventListener("DOMContentLoaded", e => {
-    const body = document.body;
-    body.style.backgroundColor = "#7db9ba";
-    body.style.backgroundImage = "url('../img/Murdoch_banksia.jpeg')";
-    body.style.backgroundRepeat = "no-repeat";
-    body.style.backgroundSize = "contain, cover";
-    body.style.backgroundPosition = "bottom right";
-    body.style.height = "100vh";
+    document.body.style.backgroundColor = "#7db9ba";
   });
 }
 
 // ------------------------------------------------------------------------- //
 // VIEW SIGNAGE EVENTS LISTENERS
 
-if (_checkPath("/signage")) {
-  document.addEventListener("DOMContentLoaded", e => {
-    const body = document.querySelector("body");
-    body.style.backgroundColor = "#434350";
-    body.style.backgroundImage = "url('../img/Dark Background_Small-02.jpg')";
-    body.style.backgroundRepeat = "no-repeat";
-    body.style.backgroundSize = "cover";
-    body.style.backgroundPosition = "center center";
-    body.style.height = "100vh";
-  });
-}
+// if (_checkPath("/signage")) {
+//   document.addEventListener("DOMContentLoaded", e => {
+//     const body = document.querySelector("body");
+//     body.style.backgroundColor = "#434350";
+//     body.style.backgroundImage = "url('../img/Dark Background_Small-02.jpg')";
+//     body.style.backgroundRepeat = "no-repeat";
+//     body.style.backgroundSize = "cover";
+//     body.style.backgroundPosition = "center center";
+//     body.style.height = "100vh";
+//   });
+// }
 
 // ------------------------------------------------------------------------- //
 // UTILITY FUNCTIONS

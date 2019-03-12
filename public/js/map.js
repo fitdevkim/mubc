@@ -61,13 +61,13 @@ class Map {
     const marker = L.marker([geo.lat, geo.lng]);
     if (this.type === "admin") {
       marker.bindPopup(_getAdminMarkerPopUp(geo, index));
-    } else if (this.type === "explore") {
+    } else if (this.type === "explore" || this.type === "view") {
       if (geo.type === "banksia") {
-        marker.bindPopup(_getBanksiaMarkerPopUp(obj));
         marker.setIcon(banksiaIcon);
+        if (this.type === "explore") marker.bindPopup(_getBanksiaMarkerPopUp(obj));
       } else if (geo.type === "signage") {
-        marker.bindPopup(_getSignageMarkerPopUp(obj));
         marker.setIcon(signageIcon);
+        if (this.type === "explore") marker.bindPopup(_getSignageMarkerPopUp(obj));
       }
     }
     marker.addTo(this.map);

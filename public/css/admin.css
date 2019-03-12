@@ -1,0 +1,45 @@
+.bg-none {
+  background: none;
+}
+
+.btn,
+.nav-pills .nav-link,
+.form-control,
+.list-group-item:first-child,
+.list-group-item:last-child,
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
+  border-radius: 0;
+}
+
+.list-group-item:hover {
+  background: rgba(194, 194, 194, 0.836);
+}
+
+.nav-pills a.nav-link {
+  color: black;
+}
+
+.nav-pills .nav-link.active {
+  background: #343a40;
+}
+
+img.list-img {
+  width: 65px;
+  height: 40px;
+  object-fit: cover;
+}
+
+/* Alerts */
+
+.alert-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border: #ebccd1;
+}
+
+.alert-success_msg {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border: #d6e9c6;
+}

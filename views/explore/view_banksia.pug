@@ -1,53 +1,56 @@
 extends layout
 
 block content
-  h3#b-name.heading.p-4.m-0.text-center.bg-secondary.text-light= b.name
-  #carousel.carousel.slide(data-ride="carousel")
-    ol.carousel-indicators
-      for img, i in b.img
-        if i === 0
-          li.active(data-target="#carousel", data-slide-to=i)
-        else
-          li(data-target="#carousel", data-slide-to=i)
-    .carousel-inner
-      for img, i in b.img
-        if i === 0
-          .carousel-item.active
-            img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
-        else
-          .carousel-item
-            img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
-    a.carousel-control-prev(href="#carousel", role="button", data-slide="prev")
-      span.carousel-control-prev-icon(aria-hidden="true")
-      span.sr-only Previous
-    a.carousel-control-next(href="#carousel", role="button", data-slide="next")
-      span.carousel-control-next-icon(aria-hidden="true")
-      span.sr-only Next
-  .container.bg-white  
-    dl.row.m-0.py-3
-      if b.commonName !== ""
-        dt#b-common-title.col-sm-3 Common Name
-        dd#b-common.col-sm-9= b.commonName 
-      if b.noongarName !== ""
-        dt#b-noongar-title.col-sm-3 Noongar Name 
-        dd#b-noongar.col-sm-9= b.noongarName
-      dt.col-sm-3 Banksia Description
-      dd#b-desc.col-sm-9= b.desc
-      dt.col-sm-3 Habitat Description
-      dd#b-habitat.col-sm-9= b.habitatDesc
-      dt.col-sm-3 Flower Description
-      dd#b-flower.col-sm-9= b.flowerDesc
-      dt.col-sm-3 Flowering Group
-      dd#b-group.col-sm-3= b.group
-        if b.group === "Others"
-          | (#{b.otherGroupName})
-      dt.col-sm-3 Flowering Period
-      dd#b-period.col-sm-3= b.flowerPeriod
-  #mubc-map
-  footer.text-light.py-4
-    p.text-center Banksia
-      span.font-weight-light Gazer 
-      | &copy; 2019
+  .mubc-bg.mubc-bg-dark
+    .container.p-0
+      .view-banksia-title= b.name
+      #carousel.carousel.slide(data-ride="carousel")
+        ol.carousel-indicators
+          for img, i in b.img
+            if i === 0
+              li.active(data-target="#carousel", data-slide-to=i)
+            else
+              li(data-target="#carousel", data-slide-to=i)
+        .carousel-inner
+          for img, i in b.img
+            if i === 0
+              .carousel-item.active
+                img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
+            else
+              .carousel-item
+                img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
+        a.carousel-control-prev(href="#carousel", role="button", data-slide="prev")
+          span.carousel-control-prev-icon(aria-hidden="true")
+          span.sr-only Previous
+        a.carousel-control-next(href="#carousel", role="button", data-slide="next")
+          span.carousel-control-next-icon(aria-hidden="true")
+          span.sr-only Next
+      .view-banksia-detail 
+        dl.row.m-0.py-3
+          if b.commonName !== ""
+            dt#b-common-title.col-sm-3 Common Name
+            dd#b-common.col-sm-9= b.commonName 
+          if b.noongarName !== ""
+            dt#b-noongar-title.col-sm-3 Noongar Name 
+            dd#b-noongar.col-sm-9= b.noongarName
+          dt.col-sm-3 Banksia Description
+          dd#b-desc.col-sm-9= b.desc
+          dt.col-sm-3 Habitat Description
+          dd#b-habitat.col-sm-9= b.habitatDesc
+          dt.col-sm-3 Flower Description
+          dd#b-flower.col-sm-9= b.flowerDesc
+          dt.col-sm-3 Flowering Group
+          dd#b-group.col-sm-3= b.group
+            if b.group === "Others"
+              | (#{b.otherGroupName})
+          dt.col-sm-3 Flowering Period
+          dd#b-period.col-sm-3= b.flowerPeriod
+      .view-banksia-map-title Come Find Me
+      #mubc-map
+      footer.text-light.pt-4
+        p.text-center Banksia
+          span.font-weight-light Gazer 
+          | &copy; 2019
 block scripts
   script(src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" ,integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==", crossorigin="")
   script(src="/js/mapConfig.js")

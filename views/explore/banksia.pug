@@ -1,39 +1,43 @@
 extends layout
 
 block content
-  .container
-    .px-1.py-2
-      input#search.form-control.mb-3.mt-3.rounded-pill(type="search", name="search", placeholder="Search")
-      small.text-light.ml-3 Filter by Season:
-      .season-filter.my-2.mx-3
-        a#spring.season(href="#") 
-          img(src="../img/Spring.png", alt="spring")
-        a#summer.season(href="#") 
-          img(src="../img/Summer.png", alt="summer")
-        a#autumn.season(href="#") 
-          img(src="../img/Autumn.png", alt="autumn")
-        a#winter.season(href="#") 
-          img(src="../img/Winter.png", alt="winter")
-        a#reset-btn.season(href="#") 
-          img(src="../img/Reset Button_white-13.png", alt="reset")
-    #banksia-list.banksia-list
-      h4.p-2 Banksia List
-      each page, i in pages
-        .page(id = "page-"+ (i+1))
-          each banksia, j in page
-            .banksia-list-item
-              a.banksia-item.shadow-sm(href="/banksia/"+banksia._id)
-                input(type="hidden", name="seasons" value= banksia.flowerPeriod.toString())
-                if banksia.img[0] !== undefined
-                  img(src="/uploads/"+banksia.img[0])
-                else 
-                  img(src="/img/no-img.png")
-                span= banksia.name
-      ul.pagination.justify-content-center.mt-4
+  .mubc-bg.mubc-bg-dark
+    .container
+      .filter-container
+        input#search.form-control.mb-3.mt-3.rounded-pill(type="search", name="search", placeholder="Search Banksia")
+        h6.text-light.ml-3 Filter by Season:
+        .season-filter.my-2.mx-3
+          a#spring.season(href="#") 
+            img(src="../img/Spring.png", alt="spring")
+          a#summer.season(href="#") 
+            img(src="../img/Summer.png", alt="summer")
+          a#autumn.season(href="#") 
+            img(src="../img/Autumn.png", alt="autumn")
+          a#winter.season(href="#") 
+            img(src="../img/Winter.png", alt="winter")
+          a#reset-btn.season(href="#") 
+            img(src="../img/Reset Button_white-13.png", alt="reset")
+      #banksia-list.banksia-list
+        .banksia-list-title.pl-3.py-2 Banksia List
         each page, i in pages
-          li.page-item(id="page-item-"+ (i+1))
-            a.page-link(href=("#banksia-list"))= i+1
-
+          .page(id = "page-"+ (i+1))
+            each banksia, j in page
+              .banksia-list-item
+                a.banksia-item.shadow-sm(href="/banksia/"+banksia._id)
+                  input(type="hidden", name="seasons" value= banksia.flowerPeriod.toString())
+                  if banksia.img[0] !== undefined
+                    img(src="/uploads/"+banksia.img[0])
+                  else 
+                    img(src="/img/no-img.png")
+                  span= banksia.name
+        ul.pagination.justify-content-center.mt-4
+          each page, i in pages
+            li.page-item(id="page-item-"+ (i+1))
+              a.page-link(href=("#banksia-list"))= i+1
+      footer.text-light.pt-4
+        p.pt-4.text-center Banksia
+          span.font-weight-light Gazer 
+          | &copy; 2019
 block scripts
   script(src='/js/list.js')
 

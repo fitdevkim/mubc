@@ -1,54 +1,59 @@
 extends layout
 
 block content
-  .container.p-4
-    //- Tab Content
-    .tab-content.mt-4
-      .tab-pane.fade.show.active(id="mubc-tab",  role='tabpanel', arialabelledby="mubc-tab")
-        .about-section
-          .about-section-title About Us
-          .about-section-body
-            p= section.get("about-mubc").desc
-      .tab-pane.fade(id="banksia-tab",  role='tabpanel', arialabelledby="banksia-tab")
-        .about-section
-          .about-section-title Banksia
-          .about-section-body
-            p= section.get("about-banksia").desc
-      .tab-pane.fade(id="culture-tab",  role='tabpanel', arialabelledby="culture-tab")
-        .about-section
-          .about-section-title Culture
-          .about-section-body
-            h5= section.get("cultural").name
-            p= section.get("cultural").desc
-            h5= section.get("environment").name
-            p= section.get("environment").desc
-      .tab-pane.fade(id="contact-tab",  role='tabpanel', arialabelledby="contact-tab")
-        .about-section
-          .about-section-title Contact Us
-          .about-section-body
-            //- img.mb-2(src="../img/contact-us_map.png" width="100%")
-            h5 Murdoch University Banksia Court
-            dl.col-sm-5.mx-auto
-              dt Address:
-              dd 90 South Street, Murdoch Western Australia 6150
-              dt Phone:
-              dd +61 8 9360 6000 
-            form
-              input.form-control.mb-3.rounded(type="text", placeholder="Name")
-              input.form-control.mb-3.rounded(type="email", placeholder="Email")
-              textarea.form-control.mb-3.rounded( rows="3", placeholder="Your Message")
-              button.form-control.rounded.btn-info Submit
-    //- Nav Tabs
-    ul#about-tabs.nav(role='tablist').d-flex.justify-content-between.px-4
-      li.nav-item
-        a.nav-link.active.p-0(id="mubc-nav", href="#mubc-tab", data-toggle="pill", role='tab', aria-controls="mubc-nav", aria-selected='true')
-          img.about-nav(src="../img/Banksia-05.png")
-      li.nav-item
-        a.nav-link.p-0(id="banksia-nav", href="#banksia-tab", data-toggle="pill", role='tab', aria-controls="banksia-nav", aria-selected='true')
-          img.about-nav(src="../img/Banksia-04.png")
-      li.nav-item
-        a.nav-link.p-0(id="culture-nav", href="#culture-tab", data-toggle="pill", role='tab', aria-controls="culture-nav", aria-selected='true')
-          img.about-nav(src="../img/Banksia-06.png")
-      li.nav-item
-        a.nav-link.p-0(id="contact-nav", href="#contact-tab", data-toggle="pill", role='tab', aria-controls="contact-nav", aria-selected='true')
-          img.about-nav(src="../img/Banksia-07.png")
+  .mubc-bg.mubc-bg-primary
+    .container
+      //- Tab Content
+      .tab-content.mb-3
+        .tab-pane.fade.show.active(id="mubc-tab",  role='tabpanel', arialabelledby="mubc-tab")
+          .about-section
+            .about-section-title About Us
+            .about-section-body
+              p= section.get("about-mubc").desc
+        .tab-pane.fade(id="banksia-tab",  role='tabpanel', arialabelledby="banksia-tab")
+          .about-section
+            .about-section-title Banksia
+            .about-section-body
+              p= section.get("about-banksia").desc
+        .tab-pane.fade(id="culture-tab",  role='tabpanel', arialabelledby="culture-tab")
+          .about-section
+            .about-section-title Culture
+            .about-section-body
+              h5= section.get("cultural").name
+              p= section.get("cultural").desc
+              h5= section.get("environment").name
+              p= section.get("environment").desc
+        .tab-pane.fade(id="contact-tab",  role='tabpanel', arialabelledby="contact-tab")
+          .about-section
+            .about-section-title Contact Us
+            .about-section-body
+              //- img.mb-2(src="../img/contact-us_map.png" width="100%")
+              h5 Murdoch University Banksia Court
+              dl.col-sm-5.mx-auto
+                dt Address:
+                dd 90 South Street, Murdoch Western Australia 6150
+                dt Phone:
+                dd +61 8 9360 6000 
+              form
+                input.form-control.mb-3.rounded(type="text", placeholder="Name")
+                input.form-control.mb-3.rounded(type="email", placeholder="Email")
+                textarea.form-control.mb-3.rounded( rows="3", placeholder="Your Message")
+                button.form-control.rounded.btn-info Submit
+      //- Nav Tabs
+      ul#about-tabs.nav(role='tablist').d-flex.justify-content-between.px-4
+        li.nav-item
+          a.nav-link.active.p-0(id="mubc-nav", href="#mubc-tab", data-toggle="pill", role='tab', aria-controls="mubc-nav", aria-selected='true')
+            img.about-nav(src="../img/Banksia-05.png")
+        li.nav-item
+          a.nav-link.p-0(id="banksia-nav", href="#banksia-tab", data-toggle="pill", role='tab', aria-controls="banksia-nav", aria-selected='true')
+            img.about-nav(src="../img/Banksia-04.png")
+        li.nav-item
+          a.nav-link.p-0(id="culture-nav", href="#culture-tab", data-toggle="pill", role='tab', aria-controls="culture-nav", aria-selected='true')
+            img.about-nav(src="../img/Banksia-06.png")
+        li.nav-item
+          a.nav-link.p-0(id="contact-nav", href="#contact-tab", data-toggle="pill", role='tab', aria-controls="contact-nav", aria-selected='true')
+            img.about-nav(src="../img/Banksia-07.png")
+      footer.text-light.pt-4
+        p.pt-4.text-center Banksia
+          span.font-weight-light Gazer 
+          | &copy; 2019
