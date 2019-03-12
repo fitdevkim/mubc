@@ -63,6 +63,20 @@ router.get("/about", (req, res) => {
   });
 });
 
+// Contact us API
+router.get("/about/contact", (req, res) => {
+  About.find({ sectionType: { $ne: "notice" } }, (err, sections) => {
+    if (err) {
+      console.log(err);
+    } else {
+      var sectionMap = new Map(
+        sections.map(i => [i.sectionType, { name: i.name, desc: i.desc }])
+      );
+      res.render("explore/contact", { section: sectionMap });
+    }
+  });
+});
+
 // Explore Map Route
 router.get("/map", (req, res) => {
   res.render("explore/map");

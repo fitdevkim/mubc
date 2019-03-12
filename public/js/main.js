@@ -13,6 +13,14 @@
 //   }, 600);
 // });
 
+document.addEventListener("DOMContentLoaded", e => {
+  const overlay = document.querySelector(".menu-wrap .menu > div");
+  overlay.style.visbility = "hidden";
+  setTimeout(() => {
+    overlay.style.visbility = "visible";
+  }, 0.7);
+});
+
 // ------------------------------------------------------------------------- //
 // LANDING PAGE EVENTS
 

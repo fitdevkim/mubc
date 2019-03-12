@@ -5,7 +5,7 @@ block content
     .container
       //- Tab Content
       .tab-content.mb-3
-        .tab-pane.fade.show.active(id="mubc-tab",  role='tabpanel', arialabelledby="mubc-tab")
+        .tab-pane.fade(id="mubc-tab",  role='tabpanel', arialabelledby="mubc-tab")
           .about-section
             .about-section-title About Us
             .about-section-body
@@ -23,7 +23,7 @@ block content
               p= section.get("cultural").desc
               h5= section.get("environment").name
               p= section.get("environment").desc
-        .tab-pane.fade(id="contact-tab",  role='tabpanel', arialabelledby="contact-tab")
+        .tab-pane.fade.show.active(id="contact-tab",  role='tabpanel', arialabelledby="contact-tab")
           .about-section
             .about-section-title Contact Us
             .about-section-body
@@ -41,7 +41,7 @@ block content
       //- Nav Tabs
       ul#about-tabs.nav(role='tablist').d-flex.justify-content-between.px-4
         li.nav-item
-          a.nav-link.active.p-0(id="mubc-nav", href="#mubc-tab", data-toggle="pill", role='tab', aria-controls="mubc-nav", aria-selected='true')
+          a.nav-link.p-0(id="mubc-nav", href="#mubc-tab", data-toggle="pill", role='tab', aria-controls="mubc-nav", aria-selected='true')
             img.about-nav(src="../img/Banksia-05.png")
         li.nav-item
           a.nav-link.p-0(id="banksia-nav", href="#banksia-tab", data-toggle="pill", role='tab', aria-controls="banksia-nav", aria-selected='true')
@@ -50,7 +50,7 @@ block content
           a.nav-link.p-0(id="culture-nav", href="#culture-tab", data-toggle="pill", role='tab', aria-controls="culture-nav", aria-selected='true')
             img.about-nav(src="../img/Banksia-06.png")
         li.nav-item
-          a.nav-link.p-0(id="contact-nav", href="#contact-tab", data-toggle="pill", role='tab', aria-controls="contact-nav", aria-selected='true')
+          a.nav-link.p-0.active(id="contact-nav", href="#contact-tab", data-toggle="pill", role='tab', aria-controls="contact-nav", aria-selected='true')
             img.about-nav(src="../img/Banksia-07.png")
       footer.text-light.pt-4
         p.pt-4.text-center Banksia
