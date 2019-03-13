@@ -4,7 +4,8 @@
   "description": "MUBC Manager",
   "main": "app.js",
   "scripts": {
-    "test": "node app"
+    "start": "node app",
+    "setup": "node setup"
   },
   "author": "",
   "license": "ISC",
