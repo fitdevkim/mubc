@@ -34,6 +34,22 @@ body .navbar {
 }
 
 /* Landing Page */
+.notice-container {
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: 65px;
+}
+
+.notice {
+  background: rgba(255, 255, 255, 0.212);
+  /* text-align: center; */
+  color: #fff;
+  margin: 0 25px;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+
 .landing-container {
   margin-top: 20vh;
 }

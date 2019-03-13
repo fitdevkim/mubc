@@ -7,7 +7,14 @@ let Signage = require("../models/signage");
 
 // Home Route
 router.get("/", (req, res) => {
-  res.render("explore/index");
+  About.findOne({ sectionType: "notice" }, (err, notice) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(notice);
+      res.render("explore/index", { notice });
+    }
+  });
 });
 
 // Explore Banksia Route

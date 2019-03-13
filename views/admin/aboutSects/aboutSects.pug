@@ -13,6 +13,7 @@ block content
             a.nav-link(id=aboutSect.sectionType+'-tab',data-toggle='pill', href='#' +aboutSect.sectionType, role='tab', aria-controls=aboutSect.sectionType, aria-selected='true')=aboutSect.name
     .tab-content.px-4.py-3.shadow.border
       each aboutSect, i in aboutSects
+        -var notice = (aboutSect.sectionType === "notice" ?  false : true)
         if i == 0
           .tab-pane.fade.show.active(id=aboutSect.sectionType,  role='tabpanel', arialabelledby=aboutSect.sectionType+'-tab')
             form(method='POST', action='/admin/aboutsects/edit/' + aboutSect._id)
@@ -21,8 +22,10 @@ block content
                 input.form-control(name='name', type='text', value=aboutSect.name)
               .form-group.mb-3
                 label Section Description*
-                textarea.form-control(name='desc', rows='5', required)= aboutSect.desc
-              a.btn.btn-secondary.mr-2(href='javascript:history.go(-1)') Back
+                  if notice 
+                    | *
+                textarea.form-control(name='desc', rows='5', required=notice)= aboutSect.desc
+              a.btn.btn-secondary.mr-2(href='/admin') Back
               button.btn.btn-primary(type='submit') Update
               label.float-right.small *Required
         else
@@ -32,8 +35,10 @@ block content
                 label Section Name*
                 input.form-control(name='name', type='text', value=aboutSect.name)
               .form-group.mb-3
-                label Section Description*
-                textarea.form-control(name='desc', rows='5', required)= aboutSect.desc
-              a.btn.btn-secondary.mr-2(href='javascript:history.go(-1)') Back
+                label Section Description
+                  if notice 
+                    | *
+                textarea.form-control(name='desc', rows='5', required=notice)= aboutSect.desc
+              a.btn.btn-secondary.mr-2(href='/admin') Back
               button.btn.btn-primary(type='submit') Update
               small.float-right.text-muted *Required

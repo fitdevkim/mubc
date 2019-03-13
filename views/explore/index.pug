@@ -2,6 +2,9 @@ extends layout
 
 block content
   .mubc-bg.mubc-bg-primary
+    if notice.desc !== ""
+      .notice-container
+        .notice= notice.desc
     .container
       .landing-container
         .heading.text-light.px-2
