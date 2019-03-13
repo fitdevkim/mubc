@@ -7,12 +7,6 @@ document.addEventListener("DOMContentLoaded", e => {
   bodyStyle.transition = "1s opacity";
 });
 
-// document.addEventListener("DOMContentLoaded", e => {
-
-//   overlay.style.visbility = "hidden";
-
-// });
-
 // ------------------------------------------------------------------------- //
 // LANDING PAGE EVENTS
 
@@ -22,6 +16,7 @@ if (_checkAbsolutePath("/")) {
   btn.addEventListener("click", e => {
     toggler.checked = true;
   });
+  document.body.style.backgroundColor = "#7db9ba";
 }
 
 // ------------------------------------------------------------------------- //
@@ -82,7 +77,7 @@ if (_checkPath("/map")) {
     document
       .getElementById("locate-me")
       .addEventListener("click", e => map.locateUser());
-    // document.body.style.backgroundColor = "#f9d63c";
+    document.body.style.backgroundColor = "#f9d63c";
   });
 }
 

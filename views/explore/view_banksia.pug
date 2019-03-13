@@ -2,29 +2,30 @@ extends layout
 
 block content
   .mubc-bg.mubc-bg-dark
-    .container.p-0
+    .container
       .view-banksia-title= b.name
-      #carousel.carousel.slide(data-ride="carousel")
-        ol.carousel-indicators
-          for img, i in b.img
-            if i === 0
-              li.active(data-target="#carousel", data-slide-to=i)
-            else
-              li(data-target="#carousel", data-slide-to=i)
-        .carousel-inner
-          for img, i in b.img
-            if i === 0
-              .carousel-item.active
-                img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
-            else
-              .carousel-item
-                img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
-        a.carousel-control-prev(href="#carousel", role="button", data-slide="prev")
-          span.carousel-control-prev-icon(aria-hidden="true")
-          span.sr-only Previous
-        a.carousel-control-next(href="#carousel", role="button", data-slide="next")
-          span.carousel-control-next-icon(aria-hidden="true")
-          span.sr-only Next
+      .image-container
+        #carousel.carousel.slide(data-ride="carousel")
+          ol.carousel-indicators
+            for img, i in b.img
+              if i === 0
+                li.active(data-target="#carousel", data-slide-to=i)
+              else
+                li(data-target="#carousel", data-slide-to=i)
+          .carousel-inner
+            for img, i in b.img
+              if i === 0
+                .carousel-item.active
+                  img.d-block.w-100(src="/uploads/"+img)
+              else
+                .carousel-item
+                  img.d-block.w-100(src="/uploads/"+img)
+          a.carousel-control-prev(href="#carousel", role="button", data-slide="prev")
+            span.carousel-control-prev-icon(aria-hidden="true")
+            span.sr-only Previous
+          a.carousel-control-next(href="#carousel", role="button", data-slide="next")
+            span.carousel-control-next-icon(aria-hidden="true")
+            span.sr-only Next
       .view-banksia-detail 
         dl.row.m-0.py-3
           if b.commonName !== ""
@@ -46,7 +47,8 @@ block content
           dt.col-sm-3 Flowering Period
           dd#b-period.col-sm-3= b.flowerPeriod
       .view-banksia-map-title Come Find Me
-      #mubc-map
+      .map-container
+        #mubc-map
       footer.text-light.pt-4
         p.text-center Banksia
           span.font-weight-light Gazer 

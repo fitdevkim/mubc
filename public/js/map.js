@@ -18,7 +18,7 @@ class Map {
       subdomains: ["mt0", "mt1", "mt2", "mt3"]
     }).addTo(this.map);
 
-    this.map.setMaxBounds(this.map.getBounds());
+    // this.map.setMaxBounds(this.map.getBounds());
   }
 
   // Loads the map object component which takes in an optional id parameter

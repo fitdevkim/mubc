@@ -1,0 +1,52 @@
+/* Backgrounds */
+
+.mubc-bg-dark {
+  background: #434350 url("../img/Dark Background-02.jpg") center center/cover
+    no-repeat;
+}
+
+.mubc-bg-light {
+  background: #f9d63c url("../img/yellow background-09.jpg") center center/cover
+    no-repeat;
+}
+
+/* View Banksia Page */
+.image-container,
+.map-container {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.carousel {
+  width: 533px;
+  margin: auto;
+}
+
+.carousel-item img {
+  height: 400px;
+  object-fit: cover;
+}
+
+.view-banksia-detail {
+  padding: 30px;
+}
+
+#mubc-map {
+  width: 533px;
+  margin: auto;
+  border: none;
+}
+
+/* About section Page*/
+.about-section-body form {
+  max-width: 500px;
+  margin: auto;
+}
+
+/* View Map Page */
+#explore-map {
+  margin-top: 8vh;
+  margin-bottom: 40px;
+}
