@@ -1,25 +1,17 @@
 // main.js (Front-End Javascript)
 
 // Test animation
-// document.addEventListener("DOMContentLoaded", e => {
-//   const bodyStyle = document.body.style;
-//   // bodyStyle.visibility = "hidden";
-//   bodyStyle.opacity = "0";
-//   bodyStyle.transition = "none";
-//   setTimeout(() => {
-//     // bodyStyle.visibility = "visible";
-//     bodyStyle.opacity = "1";
-//     bodyStyle.transition = "0.5s opacity";
-//   }, 600);
-// });
-
 document.addEventListener("DOMContentLoaded", e => {
-  const overlay = document.querySelector(".menu-wrap .menu > div");
-  overlay.style.visbility = "hidden";
-  setTimeout(() => {
-    overlay.style.visbility = "visible";
-  }, 0.7);
+  const bodyStyle = document.querySelector(".mubc-bg .container").style;
+  bodyStyle.opacity = "1";
+  bodyStyle.transition = "1s opacity";
 });
+
+// document.addEventListener("DOMContentLoaded", e => {
+
+//   overlay.style.visbility = "hidden";
+
+// });
 
 // ------------------------------------------------------------------------- //
 // LANDING PAGE EVENTS

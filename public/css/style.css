@@ -18,6 +18,7 @@ body .navbar {
 
 .mubc-bg .container {
   margin-top: 70px;
+  opacity: 0;
 }
 .mubc-bg-primary {
   background: #7db9ba url("../img/Murdoch_banksia.jpeg") bottom right/contain
