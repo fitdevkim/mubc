@@ -90,7 +90,7 @@ class Map {
       })
       .on("locationerror", e => {
         console.log(e);
-        alert("Error: Location access denied.");
+        alert(`Location access denied.\n${e.message}`);
       });
   }
 }
