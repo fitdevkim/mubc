@@ -74,7 +74,24 @@ class Map {
   }
 
   locateUser() {
-    this.map.locate({ setView: true });
+    this.map
+      .locate({ setView: true })
+      .on("locationfound", e => {
+        const point = { lat: e.latitude, lng: e.longitude };
+        const bounds = mapConfig.bounds;
+        // Check if user is within boundary
+        // if (!isBounds(point, bounds)) {
+        //   alert("You are not within the Banksia Court.");
+        // } else {
+        const marker = L.marker([e.latitude, e.longitude]);
+        marker.bindPopup("You are here");
+        marker.addTo(this.map);
+        // }
+      })
+      .on("locationerror", e => {
+        console.log(e);
+        alert("Error: Location access denied.");
+      });
   }
 }
 
@@ -118,3 +135,12 @@ const signageIcon = L.icon({
   iconSize: [35, 36.3], // size of the icon
   popupAnchor: [0, -18.15] // point from which the popup should open relative to the iconAnchor
 });
+
+const isBounds = (point, bounds) => {
+  return (
+    point.lat < bounds.nw.lat &&
+    point.lat > bounds.se.lat &&
+    point.lng > bounds.nw.lng &&
+    point.lng < bounds.se.lng
+  );
+};
