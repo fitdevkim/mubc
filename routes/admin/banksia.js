@@ -179,13 +179,13 @@ router.get("/edit/:id", tool.ensureAuthenticated, (req, res) => {
     let fperiod = banksia.flowerPeriod;
     let isGold = false,
       isOrange = false,
-      isOthers = false;
-    let isProstate = false,
+      isOthers = false,
+      isProstate = false,
       isWhite = false,
       isYellow = false;
     let isSpring = false,
-      isSummer = false;
-    let isAutumn = false,
+      isSummer = false,
+      isAutumn = false,
       isWinter = false;
 
     switch (group) {
@@ -242,50 +242,6 @@ router.get("/edit/:id", tool.ensureAuthenticated, (req, res) => {
   });
 });
 
-// Upload Images Submit Post Route
-router.post("/image/upload/:id", (req, res) => {
-  upload(req, res, err => {
-    if (err) {
-      req.flash("danger", err);
-      res.redirect("/admin/banksia/" + req.params.id);
-    } else {
-      if (req.file == undefined) {
-        req.flash("danger", "No File Selected");
-        res.redirect("/admin/banksia/" + req.params.id);
-      } else {
-        let query = { _id: req.params.id };
-        let image = { $push: { img: req.file.filename } };
-
-        Banksia.updateOne(query, image, err => {
-          if (err) {
-            console.log(err);
-            return;
-          } else {
-            req.flash("success", "Image Uploaded");
-            res.redirect("/admin/banksia/" + req.params.id);
-          }
-        });
-      }
-    }
-  });
-});
-
-// Delete Banksia Image Submit POST Route
-router.post("/image/delete/:id/:img", (req, res) => {
-  let query = { _id: req.params.id };
-  let image = { $pull: { img: req.params.img } };
-
-  Banksia.updateOne(query, image, err => {
-    if (err) {
-      console.log(err);
-      return;
-    } else {
-      req.flash("success", "Image Deleted");
-      res.redirect("/admin/banksia/" + req.params.id);
-    }
-  });
-});
-
 // Update Banksia Submit POST Route
 router.post("/edit/:id", (req, res) => {
   let banksia = {};
@@ -334,6 +290,50 @@ router.post("/edit/:id", (req, res) => {
     } else {
       req.flash("success", "Banksia Updated");
       res.redirect("/admin/banksia");
+    }
+  });
+});
+
+// Upload Images Submit Post Route
+router.post("/image/upload/:id", (req, res) => {
+  upload(req, res, err => {
+    if (err) {
+      req.flash("danger", err);
+      res.redirect("/admin/banksia/" + req.params.id);
+    } else {
+      if (req.file == undefined) {
+        req.flash("danger", "No File Selected");
+        res.redirect("/admin/banksia/" + req.params.id);
+      } else {
+        let query = { _id: req.params.id };
+        let image = { $push: { img: req.file.filename } };
+
+        Banksia.updateOne(query, image, err => {
+          if (err) {
+            console.log(err);
+            return;
+          } else {
+            req.flash("success", "Image Uploaded");
+            res.redirect("/admin/banksia/" + req.params.id);
+          }
+        });
+      }
+    }
+  });
+});
+
+// Delete Banksia Image Submit POST Route
+router.post("/image/delete/:id/:img", (req, res) => {
+  let query = { _id: req.params.id };
+  let image = { $pull: { img: req.params.img } };
+
+  Banksia.updateOne(query, image, err => {
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      req.flash("success", "Image Deleted");
+      res.redirect("/admin/banksia/" + req.params.id);
     }
   });
 });

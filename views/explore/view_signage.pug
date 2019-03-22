@@ -5,27 +5,28 @@ block content
     .container
       .view-signage-title= s.name
       if s.img.length > 0
-        #carousel.carousel.slide(data-ride="carousel")
-          ol.carousel-indicators
-            for img, i in s.img
-              if i === 0
-                li.active(data-target="#carousel", data-slide-to=i)
-              else
-                li(data-target="#carousel", data-slide-to=i)
-          .carousel-inner
-            for img, i in s.img
-              if i === 0
-                .carousel-item.active
-                  img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
-              else
-                .carousel-item
-                  img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
-          a.carousel-control-prev(href="#carousel", role="button", data-slide="prev")
-            span.carousel-control-prev-icon(aria-hidden="true")
-            span.sr-only Previous
-          a.carousel-control-next(href="#carousel", role="button", data-slide="next")
-            span.carousel-control-next-icon(aria-hidden="true")
-            span.sr-only Next
+        .image-container
+          #carousel.carousel.slide(data-ride="carousel")
+            ol.carousel-indicators
+              for img, i in s.img
+                if i === 0
+                  li.active(data-target="#carousel", data-slide-to=i)
+                else
+                  li(data-target="#carousel", data-slide-to=i)
+            .carousel-inner
+              for img, i in s.img
+                if i === 0
+                  .carousel-item.active
+                    img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
+                else
+                  .carousel-item
+                    img.d-block.w-100(src="/uploads/"+img, style="height:270px;object-fit:cover;")
+            a.carousel-control-prev(href="#carousel", role="button", data-slide="prev")
+              span.carousel-control-prev-icon(aria-hidden="true")
+              span.sr-only Previous
+            a.carousel-control-next(href="#carousel", role="button", data-slide="next")
+              span.carousel-control-next-icon(aria-hidden="true")
+              span.sr-only Next
       .view-signage-detail 
         p.py-3.px-4= s.desc
       footer.text-light.py-4

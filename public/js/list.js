@@ -34,8 +34,6 @@ class List {
     list.forEach(listItem => {
       // Init banksia variable
       let itemText = getItemText(listItem);
-      // console.log(`itemText: ${itemText}`);
-      // console.log(`input: ${input}`);
       // Compares the banksia to the filter
       if (
         itemText.toLowerCase().indexOf(input.toLowerCase()) != -1 ||

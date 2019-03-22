@@ -33,11 +33,10 @@ block content
                 dd 90 South Street, Murdoch Western Australia 6150
                 dt Phone:
                 dd +61 8 9360 6000 
-              form
-                input.form-control.mb-3.rounded(type="text", placeholder="Name")
-                input.form-control.mb-3.rounded(type="email", placeholder="Email")
-                textarea.form-control.mb-3.rounded( rows="3", placeholder="Your Message")
-                button.form-control.rounded.btn-info Submit
+              input.form-control.mb-3.rounded#name(type="text", placeholder="Name")
+              input.form-control.mb-3.rounded#email(type="email", placeholder="Email")
+              textarea.form-control.mb-3.rounded#message( rows="3", placeholder="Your Message")
+              button.form-control.rounded.btn-info#contact-submit Submit
       //- Nav Tabs
       ul#about-tabs.nav(role='tablist').d-flex.justify-content-between.px-4
         li.nav-item

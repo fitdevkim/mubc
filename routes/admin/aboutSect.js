@@ -11,22 +11,7 @@ router.get("/", tool.ensureAuthenticated, (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.render("admin/aboutSects/aboutSects", {
-        aboutSects: aboutSects
-      });
-    }
-  });
-});
-
-// Load Edit About Section Route
-router.get("/edit/:id", tool.ensureAuthenticated, (req, res) => {
-  AboutSection.findById(req.params.id, (err, aboutSect) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render("admin/aboutSects/edit_aboutSects", {
-        aboutSect: aboutSect
-      });
+      res.render("admin/aboutSects/aboutSects", { aboutSects });
     }
   });
 });

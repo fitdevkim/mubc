@@ -3,20 +3,33 @@ extends layout
 block content
   .mubc-bg.mubc-bg-dark
     .container
-      .filter-container
-        input#search.form-control.mb-3.mt-3.rounded-pill(type="search", name="search", placeholder="Search Banksia")
-        h6.text-light.ml-3 Filter by Season:
+      .filter-container.mb-2
+        input#search.form-control.mb-2.mt-3.rounded(type="search", name="search", placeholder="Search by Banksia Name")
+        select#group.form-control.rounded.mb-3(name='group')
+          option Filter by Group
+          option(value="Gold", selected=isGold) Gold
+          option(value="Orange", selected=isOrange) Orange
+          option(value="Others", selected=isOthers) Others
+          option(value="Prostrate", selected=isProstate) Prostrate
+          option(value="White", selected=isWhite) White          
+          option(value="Yellow", selected=isYellow) Yellow
+        h6.text-light.ml-3#season-title Filter by Season:
         .season-filter.my-2.mx-3
           a#spring.season(href="#") 
             img(src="../img/Spring.png", alt="spring")
+            span Spring
           a#summer.season(href="#") 
             img(src="../img/Summer.png", alt="summer")
+            span Summer
           a#autumn.season(href="#") 
             img(src="../img/Autumn.png", alt="autumn")
+            span Autumn
           a#winter.season(href="#") 
             img(src="../img/Winter.png", alt="winter")
-          a#reset-btn.season(href="#") 
+            span Winter
+          a#reset.season(href="#") 
             img(src="../img/Reset Button_white-13.png", alt="reset")
+            span Reset
       #banksia-list.banksia-list
         .banksia-list-title.pl-3.py-2 Banksia List
         each page, i in pages
@@ -25,6 +38,7 @@ block content
               .banksia-list-item
                 a.banksia-item.shadow-sm(href="/banksia/"+banksia._id)
                   input(type="hidden", name="seasons" value= banksia.flowerPeriod.toString())
+                  input(type="hidden", name="group" value= banksia.group)
                   if banksia.img[0] !== undefined
                     img(src="/uploads/"+banksia.img[0])
                   else 

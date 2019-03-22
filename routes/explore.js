@@ -11,7 +11,6 @@ router.get("/", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(notice);
       res.render("explore/index", { notice });
     }
   });

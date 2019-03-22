@@ -82,12 +82,25 @@ a.landing-btn:active {
   /* margin-top: 15vh; */
   padding: 5px;
 }
-.filter-container #search {
-  opacity: 0.7;
+
+.filter-container #search,
+.filter-container #group {
+  opacity: 0.5;
   text-align: center;
 }
 
-.filter-container #search:focus {
+#season-title {
+  opacity: 0.5;
+}
+
+.season {
+  opacity: 0.5;
+}
+
+.filter-container #search:focus,
+.filter-container #group:focus,
+.season:hover,
+.season.active {
   opacity: 1;
 }
 
@@ -98,6 +111,21 @@ a.landing-btn:active {
 
 .season img {
   height: 60px;
+}
+
+.season span {
+  display: block;
+  text-align: center;
+  color: #fff;
+  font-size: 13px;
+}
+
+.season:hover {
+  text-decoration: none;
+}
+
+.filter-container #group {
+  text-align-last: center;
 }
 
 .banksia-list {
