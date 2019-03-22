@@ -18,7 +18,7 @@ class Map {
       subdomains: ["mt0", "mt1", "mt2", "mt3"]
     }).addTo(this.map);
 
-    // this.map.setMaxBounds(this.map.getBounds());
+    this.map.setMaxBounds(this.map.getBounds());
   }
 
   // Loads the map object component which takes in an optional id parameter
@@ -80,13 +80,13 @@ class Map {
         const point = { lat: e.latitude, lng: e.longitude };
         const bounds = mapConfig.bounds;
         // Check if user is within boundary
-        // if (!isBounds(point, bounds)) {
-        //   alert("You are not within the Banksia Court.");
-        // } else {
-        const marker = L.marker([e.latitude, e.longitude]);
-        marker.bindPopup("You are here");
-        marker.addTo(this.map);
-        // }
+        if (!isBounds(point, bounds)) {
+          alert("You are not within the Banksia Court.");
+        } else {
+          const marker = L.marker([e.latitude, e.longitude]);
+          marker.bindPopup("You are here");
+          marker.addTo(this.map);
+        }
       })
       .on("locationerror", e => {
         console.log(e);
@@ -110,8 +110,8 @@ const _getAdminMarkerPopUp = function(geo, index) {
 const _getBanksiaMarkerPopUp = function(banksia) {
   return `
       <a class="marker-popup" href="/banksia/${banksia._id}">
-        <span>${banksia.name}</span>
-        <img src="/uploads/${banksia.img[0]}", class="img-thumbnail">
+        <img src="/uploads/${banksia.img[0]}">  
+        <span>${banksia.name}</span> 
       </a>`;
 };
 
