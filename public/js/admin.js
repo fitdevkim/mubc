@@ -26,19 +26,6 @@ if (search) {
     });
     e.preventDefault();
   });
-
-  // search.addEventListener("keyup", e => {
-  //   const listItems = document.querySelectorAll(".list-group-item");
-  //   searchInput = e.target.value.toLowerCase();
-  //   listItems.forEach(item => {
-  //     const banksia = item.firstChild.firstChild.textContent.toLowerCase();
-  //     if (banksia.indexOf(searchInput) != -1 || searchInput === "") {
-  //       item.style.display = "block";
-  //     } else {
-  //       item.style.display = "none";
-  //     }
-  //   });
-  // });
 }
 
 // ------------------------------------------------------------------------- //

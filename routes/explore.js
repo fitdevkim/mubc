@@ -50,11 +50,6 @@ router.get("/signage/:id", (req, res) => {
   });
 });
 
-// Explore Route
-router.get("/explore", (req, res) => {
-  res.render("explore/action");
-});
-
 // About Sections API
 router.get("/about", (req, res) => {
   About.find({ sectionType: { $ne: "notice" } }, (err, sections) => {

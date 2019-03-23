@@ -6,19 +6,27 @@ class Map {
   constructor(type, mapId) {
     this.type = type;
     this.mapid = mapId;
-    this.map = L.map(mapId, {
-      center: mapConfig.center,
-      zoom: mapConfig.zoom,
-      zoomDelta: 0.25,
-      zoomSnap: 0 // <-- Remember to do a live test
-    });
-    L.tileLayer("http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}", {
-      minZoom: mapConfig.minZoom,
-      maxZoom: mapConfig.maxZoom,
-      subdomains: ["mt0", "mt1", "mt2", "mt3"]
-    }).addTo(this.map);
 
-    this.map.setMaxBounds(this.map.getBounds());
+    new MUBC_API("map")
+      .get()
+      .then(m => {
+        this.map = L.map(mapId, {
+          center: m.center,
+          zoom: m.zoom,
+          zoomDelta: 0.25,
+          zoomSnap: 0 // <-- Remember to do a live test
+        });
+        L.tileLayer("http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}", {
+          minZoom: m.minZoom,
+          maxZoom: m.maxZoom,
+          subdomains: ["mt0", "mt1", "mt2", "mt3"]
+        }).addTo(this.map);
+
+        this.map.setMaxBounds(this.map.getBounds());
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   // Loads the map object component which takes in an optional id parameter
@@ -77,16 +85,23 @@ class Map {
     this.map
       .locate({ setView: true })
       .on("locationfound", e => {
-        const point = { lat: e.latitude, lng: e.longitude };
-        const bounds = mapConfig.bounds;
-        // Check if user is within boundary
-        if (!isBounds(point, bounds)) {
-          alert("You are not within the Banksia Court.");
-        } else {
-          const marker = L.marker([e.latitude, e.longitude]);
-          marker.bindPopup("You are here");
-          marker.addTo(this.map);
-        }
+        new MUBC_API("map")
+          .get()
+          .then(m => {
+            const point = { lat: e.latitude, lng: e.longitude };
+            const bounds = m.bounds;
+            // Check if user is within boundary
+            if (!isBounds(point, bounds)) {
+              alert("You are not within the Banksia Court.");
+            } else {
+              const marker = L.marker([e.latitude, e.longitude]);
+              marker.bindPopup("You are here");
+              marker.addTo(this.map);
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
       })
       .on("locationerror", e => {
         console.log(e);

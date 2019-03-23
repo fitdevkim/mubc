@@ -1,3 +1,7 @@
+const express = require("express");
+const multer = require("multer");
+const path = require("path");
+
 module.exports = {
   // Access Control
   ensureAuthenticated: function(req, res, next) {
@@ -28,5 +32,45 @@ module.exports = {
       }
     });
     return pages;
+  },
+
+  upload: function(type) {
+    // Set Storage Engine
+    const storage = multer.diskStorage({
+      destination: "./public/uploads",
+      filename: function(req, file, cb) {
+        cb(
+          null,
+          file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+        );
+      }
+    });
+
+    // Init Upload
+    const upload = multer({
+      storage: storage,
+      limits: { fileSize: 1000000 },
+      fileFilter: function(req, file, cb) {
+        checkFileType(file, cb);
+      }
+    }).single(type);
+
+    return upload;
+  }
+};
+
+// Check File Type
+const checkFileType = (file, cb) => {
+  // Allow Extensions
+  const filetypes = /jpeg|jpg|png|gif/;
+  // Check Extension
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // Check Mime
+  const mimetype = filetypes.test(file.mimetype);
+
+  if (mimetype && extname) {
+    return cb(null, true);
+  } else {
+    cb("Error: Images Only");
   }
 };

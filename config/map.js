@@ -17,8 +17,10 @@ module.exports = {
   },
   // Center Geo Point of the Map
   center: {
-    lat: -32.06823110979768,
-    lng: 115.83507746458054
+    lat: -32.068227,
+    lng: 115.835032
   },
-  zoom: 19
+  zoom: 18.5,
+  minZoom: 18.5,
+  maxZoom: 21
 };
