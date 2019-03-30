@@ -93,7 +93,7 @@ class Map {
             // Check if user is within boundary
             if (!_isBounds(point, bounds)) {
               alert("You are not within the Banksia Court.");
-              map.setView(map._initialCenter, map._initialZoom);
+              map.setView(m.center, m.zoom);
             } else {
               const marker = L.marker([e.latitude, e.longitude]);
               marker.bindPopup("You are here");
