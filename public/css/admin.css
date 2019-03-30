@@ -30,6 +30,12 @@ img.list-img {
   object-fit: cover;
 }
 
+/* Map */
+#mapid {
+  height: 400px;
+  width: 100%;
+}
+
 /* Alerts */
 
 .alert-error {

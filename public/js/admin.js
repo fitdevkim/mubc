@@ -48,7 +48,9 @@ if (_checkPath("/admin/banksia") || _checkPath("/admin/signage")) {
         map.load(id);
 
         // Fix Map Load Issue
-        document.getElementById("geolocations").className = "tab-pane fade";
+        setTimeout(() => {
+          document.getElementById("geolocations").className = "tab-pane fade";
+        }, 50);
       }
       break;
 

@@ -25,7 +25,7 @@ class List {
   // Filters the banksia list by type (name/season)
   filter(input, endCondition, getItemText) {
     // Get Banksia List HTML Elements
-    const list = this.getAllListItems();
+    const list = _getAllListItems(this.listItemElem);
 
     // Displays all the banksia list item HTML elements
     this.displayAllPages();
@@ -48,7 +48,7 @@ class List {
     });
 
     // Check if list is empty
-    if (this.isResultsNone()) {
+    if (_isResultsNone(this.listItemElem)) {
       this.noResult.style.display = "block";
       this.noResult.innerText = `No results found for query (${input}).`;
     } else {
@@ -62,11 +62,6 @@ class List {
     }
   }
 
-  // Retrieves an array of elements with the class of banksia-list-item
-  getAllListItems() {
-    return document.querySelectorAll(this.listItemElem);
-  }
-
   // Sets all pages to be visible
   displayAllPages() {
     _setAllPages("block");
@@ -75,17 +70,6 @@ class List {
   // Sets the banksia list to its zero state
   reset() {
     _setActive(1);
-  }
-
-  isResultsNone() {
-    const items = document.querySelectorAll(this.listItemElem);
-    let check = true;
-    items.forEach(item => {
-      if (item.style.display != "none") {
-        check = false;
-      }
-    });
-    return check;
   }
 }
 
@@ -105,6 +89,22 @@ const _setAllPages = function(display) {
   });
   // Hide all pagination elements
   pagination.style.display = "none";
+};
+
+// Retrieves an array of elements with the class of banksia-list-item
+const _getAllListItems = function(listItemElem) {
+  return document.querySelectorAll(listItemElem);
+};
+
+const _isResultsNone = function(listItemElem) {
+  const items = document.querySelectorAll(listItemElem);
+  let check = true;
+  items.forEach(item => {
+    if (item.style.display != "none") {
+      check = false;
+    }
+  });
+  return check;
 };
 
 const _setActive = function(pageNum) {

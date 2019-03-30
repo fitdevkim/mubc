@@ -91,8 +91,9 @@ class Map {
             const point = { lat: e.latitude, lng: e.longitude };
             const bounds = m.bounds;
             // Check if user is within boundary
-            if (!isBounds(point, bounds)) {
+            if (!_isBounds(point, bounds)) {
               alert("You are not within the Banksia Court.");
+              map.setView(map._initialCenter, map._initialZoom);
             } else {
               const marker = L.marker([e.latitude, e.longitude]);
               marker.bindPopup("You are here");
@@ -109,6 +110,26 @@ class Map {
       });
   }
 }
+
+// ----------------------------------------------------------------------------
+// PRIVATE OBJECTS
+
+const banksiaIcon = L.icon({
+  iconUrl: "/img/signage option-21.png",
+
+  iconSize: [35, 32.7], // size of the icon
+  popupAnchor: [0, -16.35] // point from which the popup should open relative to the iconAnchor
+});
+
+const signageIcon = L.icon({
+  iconUrl: "/img/signage option-22.png",
+
+  iconSize: [35, 36.3], // size of the icon
+  popupAnchor: [0, -18.15] // point from which the popup should open relative to the iconAnchor
+});
+
+// ----------------------------------------------------------------------------
+// PRIVATE FUNCTIONS
 
 const _getAdminMarkerPopUp = function(geo, index) {
   return `
@@ -137,21 +158,7 @@ const _getSignageMarkerPopUp = function(signage) {
       </a>`;
 };
 
-const banksiaIcon = L.icon({
-  iconUrl: "/img/signage option-21.png",
-
-  iconSize: [35, 32.7], // size of the icon
-  popupAnchor: [0, -16.35] // point from which the popup should open relative to the iconAnchor
-});
-
-const signageIcon = L.icon({
-  iconUrl: "/img/signage option-22.png",
-
-  iconSize: [35, 36.3], // size of the icon
-  popupAnchor: [0, -18.15] // point from which the popup should open relative to the iconAnchor
-});
-
-const isBounds = (point, bounds) => {
+const _isBounds = (point, bounds) => {
   return (
     point.lat < bounds.nw.lat &&
     point.lat > bounds.se.lat &&

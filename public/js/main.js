@@ -1,6 +1,6 @@
 // main.js (Front-End Javascript)
 
-// Test animation
+// Page animation
 document.addEventListener("DOMContentLoaded", e => {
   const bodyStyle = document.querySelector(".mubc-bg .container").style;
   bodyStyle.opacity = "1";
@@ -27,12 +27,13 @@ if (_checkPath("/banksia")) {
   switch (_getPathLength()) {
     case 2: // Banksia List Page
       // Init Banksia List
-      // new BanksiaList();
+      const list = new List(".banksia-list", ".banksia-list-item");
+      list.init();
+
       const search = document.getElementById("search");
       const seasonFilters = document.querySelectorAll(".season");
       const group = document.getElementById("group");
-      const list = new List(".banksia-list", ".banksia-list-item");
-      list.init();
+
       search.addEventListener("keyup", e => {
         const input = e.target.value;
         list.filter(input, "", listItem => {
