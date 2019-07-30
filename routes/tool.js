@@ -1,6 +1,6 @@
-const express = require("express");
-const multer = require("multer");
-const path = require("path");
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
 
 module.exports = {
   // Access Control
@@ -8,8 +8,8 @@ module.exports = {
     if (req.isAuthenticated()) {
       return next();
     } else {
-      req.flash("danger", "Please login");
-      res.redirect("/admin");
+      req.flash('danger', 'Please login');
+      res.redirect('/admin');
     }
   },
 
@@ -37,11 +37,11 @@ module.exports = {
   upload: function(type) {
     // Set Storage Engine
     const storage = multer.diskStorage({
-      destination: "./public/uploads",
+      destination: 'public/uploads',
       filename: function(req, file, cb) {
         cb(
           null,
-          file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+          file.fieldname + '-' + Date.now() + path.extname(file.originalname)
         );
       }
     });
@@ -71,6 +71,6 @@ const checkFileType = (file, cb) => {
   if (mimetype && extname) {
     return cb(null, true);
   } else {
-    cb("Error: Images Only");
+    cb('Error: Images Only');
   }
 };
