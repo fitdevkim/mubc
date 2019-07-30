@@ -37,7 +37,7 @@ module.exports = {
   upload: function(type) {
     // Set Storage Engine
     const storage = multer.diskStorage({
-      destination: './mubc/public/uploads',
+      destination: './public/uploads',
       filename: function(req, file, cb) {
         cb(
           null,
